@@ -111,6 +111,11 @@ class PreviewRadioState extends State<PreviewRadio> {
                   options: createSet(widget.values),
                   initialValue: [],
                 ));
+                formCreator.addDetails([
+                  "FormBuilderRadio",
+                  "${widget.attribute}",
+                  widget.values.toString()
+                ]);
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => FormCreatorPage()),

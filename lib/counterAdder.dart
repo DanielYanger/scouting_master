@@ -90,7 +90,8 @@ class PreviewCounterState extends State<PreviewCounter> {
                   ),
                   step: 1,
                 ));
-
+                formCreator.addDetails(
+                    ["FormBuilderTouchSpin", "${widget.attribute}"]);
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => FormCreatorPage()),

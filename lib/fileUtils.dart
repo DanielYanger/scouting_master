@@ -14,13 +14,13 @@ class FileUtils {
     return File('$path/myfile.txt');
   }
 
-  static Future<File> saveToFile(List<List<String>> data, String title) async {
+  static Future<File> saveToFile(String data, String title) async {
     final path = await getFilePath;
     var file = new File('$path/$title.txt');
     print(file.path);
     print(data);
     file.create();
-    return file.writeAsString(data.toString());
+    return file.writeAsString(data);
   }
 
   static Future<String> createFile(String fileName) async {

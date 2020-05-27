@@ -94,6 +94,11 @@ class PreviewDividerState extends State<PreviewDivider> {
                       child: Text('${widget.attribute}',
                           style: TextStyle(fontSize: widget.fontSize))),
                 );
+                formCreator.addDetails([
+                  "Divider",
+                  "${widget.attribute}",
+                  widget.fontSize.toString()
+                ]);
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => FormCreatorPage()),

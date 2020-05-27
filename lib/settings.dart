@@ -19,32 +19,12 @@ class SettingsPage extends StatefulWidget {
 }
 
 class SettingsPageState extends State<SettingsPage> {
-  static List<List<String>> createString(List<List<String>> detail) {
-    List<List<String>> value = [];
+  static String createString(List<List<String>> detail) {
+    String value = "";
     for (List<String> i in detail) {
-      if (i.toString() == "FormBuilderRadio") {
-        value.add(i);
-        print(i.toString());
-      } else if (i.toString() == "FormBuilderSlider") {
-        value.add(i);
-        print(i.toString());
-      } else if (i.toString() == "FormBuilderTouchSpin") {
-        value.add(i);
-        print(i.toString());
-      } else if (i.toString() == "FormBuilderCheckboxList") {
-        value.add(i);
-        print(i.toString());
-      } else if (i.toString() == "Center(alignment: center)") {
-        value.add(i);
-        print(i.toString());
-      } else if (i.toString() == "FormBuilderDropdown") {
-        value.add(i);
-        print(i.toString());
-      } else if (i.toString() == "FormBuilderTextField") {
-        value.add(i);
-        print(i.toString());
-      }
+      value += i.toString() + ";";
     }
+    print(value);
     return value;
   }
 
@@ -67,6 +47,7 @@ class SettingsPageState extends State<SettingsPage> {
                 ),
                 onTap: () {
                   widget.form.removeLast();
+                  widget.details.removeLast();
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => FormCreatorPage()),
@@ -85,7 +66,7 @@ class SettingsPageState extends State<SettingsPage> {
                   size: 50,
                 ),
                 onTap: () {
-                  FileUtils.saveToFile(widget.details, "newform");
+                  FileUtils.saveToFile(createString(widget.details), "newform");
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => FormCreatorPage()),

@@ -145,6 +145,11 @@ class PreviewDropdownState extends State<PreviewDropdown> {
                     initialValue: widget.values.split(',')[0],
                   ),
                 );
+                formCreator.addDetails([
+                  "FormBuilderDropdown",
+                  "${widget.attribute}",
+                  widget.values.split(',').toString()
+                ]);
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => FormCreatorPage()),
