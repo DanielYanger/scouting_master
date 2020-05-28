@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:scoutingmaster/exportForm.dart';
 import 'formCreator.dart';
-import 'fileUtils.dart';
-
-class StringGenerator {}
+import 'exportForm.dart';
 
 // ignore: must_be_immutable
 class SettingsPage extends StatefulWidget {
@@ -19,15 +18,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class SettingsPageState extends State<SettingsPage> {
-  static String createString(List<List<String>> detail) {
-    String value = "";
-    for (List<String> i in detail) {
-      value += i.toString() + ";";
-    }
-    print(value);
-    return value;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,12 +76,12 @@ class SettingsPageState extends State<SettingsPage> {
                   size: 50,
                 ),
                 onTap: () {
-                  FileUtils.saveToFile(createString(widget.details), "newform");
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                    (Route<dynamic> route) => false,
-                  );
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ExportPage(
+                                details: widget.details,
+                              )));
                 },
               ),
             ),

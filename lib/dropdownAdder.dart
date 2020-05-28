@@ -96,8 +96,9 @@ class PreviewDropdown extends StatefulWidget {
 }
 
 class PreviewDropdownState extends State<PreviewDropdown> {
-  static List<String> exporter(String attribute, List<String> values) {
-    List<String> finalValue = ["FormBuilderDropdown", attribute];
+  static List<String> exporter(
+      String attribute, String hint, List<String> values) {
+    List<String> finalValue = ["FormBuilderDropdown", attribute, hint];
     for (String i in values) {
       finalValue.add(i);
     }
@@ -133,14 +134,14 @@ class PreviewDropdownState extends State<PreviewDropdown> {
                     decoration: InputDecoration(
                       labelText: "${widget.attribute}",
                     ),
-                    hint: Text('Climb Option'),
+                    hint: Text('${widget.hint}'),
                     validators: [FormBuilderValidators.required()],
                     items: createSet(widget.values.split(',')),
                     initialValue: widget.values.split(',')[0],
                   ),
                 );
-                formCreator.addDetails(
-                    exporter(widget.attribute, widget.values.split(",")));
+                formCreator.addDetails(exporter(
+                    widget.attribute, widget.hint, widget.values.split(",")));
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => FormCreatorPage()),

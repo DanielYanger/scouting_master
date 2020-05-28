@@ -100,8 +100,8 @@ class PreviewBooleanState extends State<PreviewBoolean> {
                           ))
                       .toList(growable: false),
                 ));
-                formCreator.addDetails(
-                    ["FormBuilderRadio", "${widget.attribute}", "Yes", "No"]);
+                formCreator
+                    .addDetails(["FormBuilderBoolean", "${widget.attribute}"]);
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => FormCreatorPage()),
