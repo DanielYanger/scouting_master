@@ -82,17 +82,23 @@ class PreviewDividerState extends State<PreviewDivider> {
         child: Column(
           children: <Widget>[
             Card(
-              child: Center(
-                  child: Text('${widget.attribute}',
-                      style: TextStyle(fontSize: widget.fontSize))),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Center(
+                    child: Text('${widget.attribute}',
+                        style: TextStyle(fontSize: widget.fontSize))),
+              ),
             ),
             RaisedButton(
               child: Text("Confirm"),
               onPressed: () {
                 formCreator.addComponent(
-                  Center(
-                      child: Text('${widget.attribute}',
-                          style: TextStyle(fontSize: widget.fontSize))),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Center(
+                        child: Text('${widget.attribute}',
+                            style: TextStyle(fontSize: widget.fontSize))),
+                  ),
                 );
                 formCreator.addDetails([
                   "Divider",

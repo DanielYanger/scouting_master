@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'formCreator.dart';
 import 'fileUtils.dart';
-import 'formCreator.dart' as formCreator;
 
 class StringGenerator {}
 
+// ignore: must_be_immutable
 class SettingsPage extends StatefulWidget {
   List<Widget> form;
   List<List<String>> details;
@@ -48,6 +48,26 @@ class SettingsPageState extends State<SettingsPage> {
                 onTap: () {
                   widget.form.removeLast();
                   widget.details.removeLast();
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                },
+              ),
+            ),
+            Card(
+              child: ListTile(
+                title: Text("Clear Form"),
+                subtitle: Text("Remove all current components."),
+                isThreeLine: true,
+                leading: Icon(
+                  Icons.close,
+                  size: 50,
+                ),
+                onTap: () {
+                  widget.form.clear();
+                  widget.details.clear();
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => FormCreatorPage()),

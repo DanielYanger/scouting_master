@@ -96,20 +96,14 @@ class PreviewDropdown extends StatefulWidget {
 }
 
 class PreviewDropdownState extends State<PreviewDropdown> {
-  var data;
-  bool autoValidate = true;
-  bool readOnly = false;
-  bool showSegmentedControl = true;
+  static List<String> exporter(String attribute, List<String> values) {
+    List<String> finalValue = ["FormBuilderDropdown", attribute];
+    for (String i in values) {
+      finalValue.add(i);
+    }
+    return finalValue;
+  }
 
-  var climbOptions = [
-    'Did not Park or Climb',
-    'Parked',
-    'Solo Climbed',
-    'Climbed First',
-    'Climbed Second',
-    'Buddy Climb',
-    'Carried'
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,11 +139,8 @@ class PreviewDropdownState extends State<PreviewDropdown> {
                     initialValue: widget.values.split(',')[0],
                   ),
                 );
-                formCreator.addDetails([
-                  "FormBuilderDropdown",
-                  "${widget.attribute}",
-                  widget.values.split(',').toString()
-                ]);
+                formCreator.addDetails(
+                    exporter(widget.attribute, widget.values.split(",")));
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => FormCreatorPage()),

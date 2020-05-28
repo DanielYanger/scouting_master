@@ -82,6 +82,14 @@ class PreviewRadio extends StatefulWidget {
 }
 
 class PreviewRadioState extends State<PreviewRadio> {
+  static List<String> exporter(String attribute, List<String> values) {
+    List<String> finalValue = ["FormBuilderRadio", attribute];
+    for (String i in values) {
+      finalValue.add(i);
+    }
+    return finalValue;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,11 +119,8 @@ class PreviewRadioState extends State<PreviewRadio> {
                   options: createSet(widget.values),
                   initialValue: [],
                 ));
-                formCreator.addDetails([
-                  "FormBuilderRadio",
-                  "${widget.attribute}",
-                  widget.values.toString()
-                ]);
+                formCreator
+                    .addDetails(exporter(widget.attribute, widget.values));
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => FormCreatorPage()),

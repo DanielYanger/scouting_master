@@ -82,6 +82,14 @@ class PreviewCheckbox extends StatefulWidget {
 }
 
 class PreviewCheckboxState extends State<PreviewCheckbox> {
+  static List<String> exporter(String attribute, List<String> values) {
+    List<String> finalValue = ["FormBuilderCheckboxList", attribute];
+    for (String i in values) {
+      finalValue.add(i);
+    }
+    return finalValue;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,11 +117,8 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
                   options: createSet(widget.values),
                   initialValue: [],
                 ));
-                formCreator.addDetails([
-                  "FormBuilderCheckboxList",
-                  "${widget.attribute}",
-                  widget.values.toString()
-                ]);
+                formCreator
+                    .addDetails(exporter(widget.attribute, widget.values));
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => FormCreatorPage()),
