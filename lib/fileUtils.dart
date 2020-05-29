@@ -16,7 +16,9 @@ class FileUtils {
 
   static Future<File> saveToFile(String data, String title) async {
     final path = await getFilePath;
-    var file = new File('$path/$title.txt');
+    var directory = new Directory('$path/forms');
+    directory.create();
+    var file = new File('$path/forms/$title.txt');
     print(file.path);
     print(data);
     file.create();
