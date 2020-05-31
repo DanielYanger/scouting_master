@@ -85,6 +85,24 @@ class SettingsPageState extends State<SettingsPage> {
                 },
               ),
             ),
+            Card(
+              child: ListTile(
+                title: Text("About the App"),
+                subtitle: Text(""),
+                isThreeLine: true,
+                leading: Icon(
+                  Icons.info,
+                  size: 50,
+                ),
+                onTap: () {
+                  showAboutDialog(
+                      context: context,
+                      applicationVersion: '1.0.0',
+                      applicationLegalese:
+                          "This app was developed by Daniel Yang, a programmer for FRC Team 624. This is one of the two apps developed for the Team 624 Scouting Team for use in many years to come. The purpose of this app is to enable the head scout to create master forms compatable with the Scouter App without the need to learn any code.");
+                },
+              ),
+            ),
           ],
         ));
   }
