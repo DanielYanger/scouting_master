@@ -32,7 +32,7 @@ class CounterAdderPageState extends State<CounterAdderPage> {
               ),
               ListTile(
                 title: RaisedButton(
-                  child: Text("Submit"),
+                  child: Text("Create"),
                   onPressed: () {
                     Navigator.push(
                       context,

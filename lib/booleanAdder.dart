@@ -33,7 +33,7 @@ class BooleanAdderState extends State<BooleanAdderPage> {
               ),
               ListTile(
                 title: RaisedButton(
-                  child: Text("Submit"),
+                  child: Text("Create"),
                   onPressed: () {
                     Navigator.push(
                       context,

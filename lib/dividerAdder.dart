@@ -40,7 +40,7 @@ class DividerAdderPageState extends State<DividerAdderPage> {
               ),
               ListTile(
                 title: RaisedButton(
-                  child: Text("Submit"),
+                  child: Text("Create"),
                   onPressed: () {
                     Navigator.push(
                       context,

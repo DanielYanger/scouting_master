@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'formCreator.dart';
 
+//unused right now
 class HomePage extends StatefulWidget {
   @override
   HomePageState createState() {
@@ -19,6 +20,7 @@ class HomePageState extends State<HomePage> {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.more_vert),
+              onPressed: () {},
             ),
           ],
         ),

@@ -24,11 +24,6 @@ class ComponentSelectorPageState extends State<ComponentSelectorPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Select Component"),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.more_vert),
-          ),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

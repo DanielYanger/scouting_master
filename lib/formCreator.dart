@@ -146,29 +146,3 @@ class FormCreatorPageState extends State<FormCreatorPage> {
     );
   }
 }
-
-/*ListView.builder(
-              itemCount: form != null && form.isNotEmpty ? form.length : 1,
-              itemBuilder: form != null && form.isNotEmpty
-                  ? (context, index) {
-                return Column(
-                  children: <Widget>[
-                    Card(
-                      child: form[index],
-                    ),
-                    SizedBox(height: 15),
-                  ],
-                );
-              }
-                  : (context, index) {
-                return Card(
-                  child: ListTile(
-                    title: Center(child: Text("No Form Detected")),
-                    subtitle: Center(
-                        child: Text(
-                            "Start creating a form by clicking the + button below.")),
-                    isThreeLine: true,
-                  ),
-                );
-              },
-            ),*/

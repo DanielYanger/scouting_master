@@ -12,9 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Master Scouting App',
       theme: ThemeData(
         primarySwatch: Colors.green,
-        // brightness: Brightness.dark,
         inputDecorationTheme: InputDecorationTheme(
-          // labelStyle: TextStyle(color: Colors.purple),
           border: OutlineInputBorder(
             gapPadding: 10,
           ),

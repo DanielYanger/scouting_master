@@ -42,7 +42,7 @@ class CheckboxAdderPageState extends State<CheckboxAdderPage> {
               ),
               ListTile(
                 title: RaisedButton(
-                  child: Text("Submit"),
+                  child: Text("Create"),
                   onPressed: () {
                     Navigator.push(
                       context,
