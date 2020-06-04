@@ -31,32 +31,16 @@ class ComponentSelectorPageState extends State<ComponentSelectorPage> {
           children: <Widget>[
             Card(
               child: ListTile(
-                title: Text("Slider"),
-                subtitle: Text("Insert a slider"),
+                title: Text("Divider"),
+                subtitle: Text("Insert a labeled divier"),
                 leading: Icon(
-                  Icons.linear_scale,
+                  Icons.title,
                   size: 50,
                 ),
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SliderAdderPage()),
-                  );
-                },
-              ),
-            ),
-            Card(
-              child: ListTile(
-                title: Text("Counter"),
-                subtitle: Text("Insert a counter"),
-                leading: Icon(
-                  Icons.arrow_drop_up,
-                  size: 50,
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CounterAdderPage()),
+                    MaterialPageRoute(builder: (context) => DividerAdderPage()),
                   );
                 },
               ),
@@ -79,23 +63,6 @@ class ComponentSelectorPageState extends State<ComponentSelectorPage> {
             ),
             Card(
               child: ListTile(
-                title: Text("Checkbox"),
-                subtitle: Text("Insert a checkbox"),
-                leading: Icon(
-                  Icons.check_box_outline_blank,
-                  size: 50,
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CheckboxAdderPage()),
-                  );
-                },
-              ),
-            ),
-            Card(
-              child: ListTile(
                 title: Text("Radio"),
                 subtitle: Text("Insert a radio"),
                 leading: Icon(
@@ -112,16 +79,49 @@ class ComponentSelectorPageState extends State<ComponentSelectorPage> {
             ),
             Card(
               child: ListTile(
-                title: Text("Divider"),
-                subtitle: Text("Insert a labeled divier"),
+                title: Text("Counter"),
+                subtitle: Text("Insert a counter"),
                 leading: Icon(
-                  Icons.title,
+                  Icons.arrow_drop_up,
                   size: 50,
                 ),
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DividerAdderPage()),
+                    MaterialPageRoute(builder: (context) => CounterAdderPage()),
+                  );
+                },
+              ),
+            ),
+            Card(
+              child: ListTile(
+                title: Text("Slider"),
+                subtitle: Text("Insert a slider"),
+                leading: Icon(
+                  Icons.linear_scale,
+                  size: 50,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SliderAdderPage()),
+                  );
+                },
+              ),
+            ),
+            Card(
+              child: ListTile(
+                title: Text("Checkbox"),
+                subtitle: Text("Insert a checkbox"),
+                leading: Icon(
+                  Icons.check_box_outline_blank,
+                  size: 50,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CheckboxAdderPage()),
                   );
                 },
               ),
