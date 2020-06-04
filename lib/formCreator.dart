@@ -27,7 +27,7 @@ class FormCreatorPageState extends State<FormCreatorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("624 Master Form Creator"),
+        title: Text("624 Form Creator"),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.more_vert),
