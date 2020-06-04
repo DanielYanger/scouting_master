@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoutingmaster/exportForm.dart';
-import 'formCreator.dart';
+
 import 'exportForm.dart';
+import 'formCreator.dart';
 
 // ignore: must_be_immutable
 class SettingsPage extends StatefulWidget {
@@ -28,26 +29,6 @@ class SettingsPageState extends State<SettingsPage> {
           children: <Widget>[
             Card(
               child: ListTile(
-                title: Text("Remove Component"),
-                subtitle: Text("Remove the last component."),
-                isThreeLine: true,
-                leading: Icon(
-                  Icons.remove_circle,
-                  size: 50,
-                ),
-                onTap: () {
-                  widget.form.removeLast();
-                  widget.details.removeLast();
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                    (Route<dynamic> route) => false,
-                  );
-                },
-              ),
-            ),
-            Card(
-              child: ListTile(
                 title: Text("Clear Form"),
                 subtitle: Text("Remove all current components."),
                 isThreeLine: true,
@@ -55,14 +36,35 @@ class SettingsPageState extends State<SettingsPage> {
                   Icons.close,
                   size: 50,
                 ),
-                onTap: () {
-                  widget.form.clear();
-                  widget.details.clear();
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                    (Route<dynamic> route) => false,
-                  );
+                onTap: () async {
+                  return await showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text("Confirm"),
+                          content: const Text(
+                              "Are you sure you wish to clear the form?"),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text("CONFIRM"),
+                              onPressed: () {
+                                widget.form.clear();
+                                widget.details.clear();
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => FormCreatorPage()),
+                                  (Route<dynamic> route) => false,
+                                );
+                              },
+                            ),
+                            FlatButton(
+                              child: Text("CANCEL"),
+                              onPressed: () => Navigator.of(context).pop(),
+                            )
+                          ],
+                        );
+                      });
                 },
               ),
             ),

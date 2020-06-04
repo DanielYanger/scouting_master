@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+
 import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
@@ -138,17 +139,26 @@ class PreviewSliderState extends State<PreviewSlider> {
             RaisedButton(
               child: Text("Confirm"),
               onPressed: () {
-                formCreator.addComponent(new FormBuilderSlider(
-                  attribute: "${widget.attribute}",
-                  min: widget.min,
-                  max: widget.max,
-                  initialValue: widget.initial,
-                  divisions: widget.divisions,
-                  activeColor: Colors.green,
-                  inactiveColor: Colors.green[100],
-                  decoration: InputDecoration(
-                    labelText: "${widget.attribute}",
+                formCreator.addComponent(Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Card(
+                    child: Container(
+                      height: 114,
+                      child: new FormBuilderSlider(
+                        attribute: "${widget.attribute}",
+                        min: widget.min,
+                        max: widget.max,
+                        initialValue: widget.initial,
+                        divisions: widget.divisions,
+                        activeColor: Colors.green,
+                        inactiveColor: Colors.green[100],
+                        decoration: InputDecoration(
+                          labelText: "${widget.attribute}",
+                        ),
+                      ),
+                    ),
                   ),
+                  key: Key(widget.attribute),
                 ));
                 formCreator.addDetails([
                   "FormBuilderSlider",

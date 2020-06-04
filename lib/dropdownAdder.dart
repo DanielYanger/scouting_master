@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+
 import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
@@ -129,15 +130,24 @@ class PreviewDropdownState extends State<PreviewDropdown> {
               child: Text("Confirm"),
               onPressed: () {
                 formCreator.addComponent(
-                  new FormBuilderDropdown(
-                    attribute: "${widget.attribute}",
-                    decoration: InputDecoration(
-                      labelText: "${widget.attribute}",
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Container(
+                      height: 65,
+                      child: Card(
+                        child: FormBuilderDropdown(
+                          attribute: "${widget.attribute}",
+                          decoration: InputDecoration(
+                            labelText: "${widget.attribute}",
+                          ),
+                          hint: Text('${widget.hint}'),
+                          validators: [FormBuilderValidators.required()],
+                          items: createSet(widget.values.split(',')),
+                          initialValue: widget.values.split(',')[0],
+                        ),
+                      ),
                     ),
-                    hint: Text('${widget.hint}'),
-                    validators: [FormBuilderValidators.required()],
-                    items: createSet(widget.values.split(',')),
-                    initialValue: widget.values.split(',')[0],
+                    key: ValueKey(widget.attribute),
                   ),
                 );
                 formCreator.addDetails(exporter(

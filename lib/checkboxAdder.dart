@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+
 import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
@@ -110,12 +111,22 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
             RaisedButton(
               child: Text("Confirm"),
               onPressed: () {
-                formCreator.addComponent(new FormBuilderCheckboxList(
-                  decoration: InputDecoration(labelText: '${widget.attribute}'),
-                  attribute: "${widget.attribute}",
-                  leadingInput: true,
-                  options: createSet(widget.values),
-                  initialValue: [],
+                formCreator.addComponent(Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Card(
+                    child: Container(
+                      height: 40.0 + 48.0 * widget.values.length,
+                      child: new FormBuilderCheckboxList(
+                        decoration:
+                            InputDecoration(labelText: '${widget.attribute}'),
+                        attribute: "${widget.attribute}",
+                        leadingInput: true,
+                        options: createSet(widget.values),
+                        initialValue: [],
+                      ),
+                    ),
+                  ),
+                  key: Key(widget.attribute),
                 ));
                 formCreator
                     .addDetails(exporter(widget.attribute, widget.values));

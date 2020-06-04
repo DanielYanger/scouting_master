@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+
 import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
@@ -82,12 +83,18 @@ class PreviewTextboxState extends State<PreviewTextbox> {
               child: Text("Confirm"),
               onPressed: () {
                 formCreator.addComponent(
-                  FormBuilderTextField(
-                    attribute: "${widget.attribute}",
-                    decoration: InputDecoration(
-                      labelText: "${widget.attribute}",
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: FormBuilderTextField(
+                        attribute: "${widget.attribute}",
+                        decoration: InputDecoration(
+                          labelText: "${widget.attribute}",
+                        ),
+                        initialValue: "",
+                      ),
                     ),
-                    initialValue: "",
+                    key: Key(widget.attribute),
                   ),
                 );
                 List<String> a = [

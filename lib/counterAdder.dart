@@ -82,13 +82,22 @@ class PreviewCounterState extends State<PreviewCounter> {
             RaisedButton(
               child: Text("Confirm"),
               onPressed: () {
-                formCreator.addComponent(new FormBuilderTouchSpin(
-                  attribute: "${widget.attribute}",
-                  initialValue: 0,
-                  decoration: InputDecoration(
-                    labelText: "${widget.attribute}",
+                formCreator.addComponent(Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Card(
+                    child: Container(
+                      height: 80,
+                      child: new FormBuilderTouchSpin(
+                        attribute: "${widget.attribute}",
+                        initialValue: 0,
+                        decoration: InputDecoration(
+                          labelText: "${widget.attribute}",
+                        ),
+                        step: 1,
+                      ),
+                    ),
                   ),
-                  step: 1,
+                  key: Key(widget.attribute),
                 ));
                 formCreator.addDetails(
                     ["FormBuilderTouchSpin", "${widget.attribute}"]);

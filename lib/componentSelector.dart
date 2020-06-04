@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoutingmaster/dividerAdder.dart';
 import 'package:scoutingmaster/radioAdder.dart';
-import 'sliderAdder.dart';
-import 'counterAdder.dart';
+
 import 'booleanAdder.dart';
 import 'checkboxAdder.dart';
+import 'counterAdder.dart';
 import 'dividerAdder.dart';
 import 'dropdownAdder.dart';
+import 'sliderAdder.dart';
 import 'textboxAdder.dart';
 
 class ComponentSelectorPage extends StatefulWidget {

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+
 import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
@@ -54,7 +55,7 @@ class BooleanAdderState extends State<BooleanAdderPage> {
 class PreviewBoolean extends StatefulWidget {
   String attribute;
 
-  PreviewBoolean({Key key, this.attribute}) : super(key: key);
+  PreviewBoolean({Key key, this.attribute});
 
   @override
   PreviewBooleanState createState() => PreviewBooleanState();
@@ -87,19 +88,31 @@ class PreviewBooleanState extends State<PreviewBoolean> {
             RaisedButton(
               child: Text("Confirm"),
               onPressed: () {
-                formCreator.addComponent(new FormBuilderRadio(
-                  decoration: InputDecoration(labelText: '${widget.attribute}'),
-                  attribute: "${widget.attribute}",
-                  initialValue: "Yes",
-                  leadingInput: true,
-                  validators: [FormBuilderValidators.required()],
-                  options: ["Yes", "No"]
-                      .map((lang) => FormBuilderFieldOption(
-                            value: lang,
-                            child: Text('$lang'),
-                          ))
-                      .toList(growable: false),
-                ));
+                formCreator.addComponent(
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Card(
+                      child: Container(
+                        height: 136,
+                        child: FormBuilderRadio(
+                          decoration:
+                              InputDecoration(labelText: '${widget.attribute}'),
+                          attribute: "${widget.attribute}",
+                          initialValue: "Yes",
+                          leadingInput: true,
+                          validators: [FormBuilderValidators.required()],
+                          options: ["Yes", "No"]
+                              .map((lang) => FormBuilderFieldOption(
+                                    value: lang,
+                                    child: Text('$lang'),
+                                  ))
+                              .toList(growable: false),
+                        ),
+                      ),
+                    ),
+                    key: ValueKey(widget.attribute),
+                  ),
+                );
                 formCreator
                     .addDetails(["FormBuilderBoolean", "${widget.attribute}"]);
                 Navigator.pushAndRemoveUntil(

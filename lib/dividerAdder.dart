@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
@@ -94,10 +95,19 @@ class PreviewDividerState extends State<PreviewDivider> {
               onPressed: () {
                 formCreator.addComponent(
                   Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Center(
-                        child: Text('${widget.attribute}',
-                            style: TextStyle(fontSize: widget.fontSize))),
+                    padding: const EdgeInsets.all(4.0),
+                    child: Container(
+                      height: 30 + widget.fontSize,
+                      child: Card(
+                        child: Center(
+                          child: Text(
+                            '${widget.attribute}',
+                            style: TextStyle(fontSize: widget.fontSize),
+                          ),
+                        ),
+                      ),
+                    ),
+                    key: Key(widget.attribute),
                   ),
                 );
                 formCreator.addDetails([
