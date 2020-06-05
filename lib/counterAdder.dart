@@ -78,6 +78,10 @@ class PreviewCounterState extends State<PreviewCounter> {
                 labelText: "${widget.attribute}",
               ),
               step: 1,
+              addIcon: Icon(Icons.add_circle),
+              subtractIcon: Icon(Icons.remove_circle),
+              iconSize: 48.0,
+              min: 0,
             ),
             RaisedButton(
               child: Text("Confirm"),
@@ -86,7 +90,7 @@ class PreviewCounterState extends State<PreviewCounter> {
                   padding: const EdgeInsets.all(4.0),
                   child: Card(
                     child: Container(
-                      height: 80,
+                      height: 96,
                       child: new FormBuilderTouchSpin(
                         attribute: "${widget.attribute}",
                         initialValue: 0,
@@ -94,6 +98,10 @@ class PreviewCounterState extends State<PreviewCounter> {
                           labelText: "${widget.attribute}",
                         ),
                         step: 1,
+                        addIcon: Icon(Icons.add_circle),
+                        subtractIcon: Icon(Icons.remove_circle),
+                        iconSize: 48.0,
+                        min: 0,
                       ),
                     ),
                   ),
