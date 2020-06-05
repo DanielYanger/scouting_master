@@ -76,7 +76,7 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                                 topLeft: const Radius.circular(10.0),
                               )),
                           child: Padding(
-                            padding: const EdgeInsets.all(15.0),
+                            padding: const EdgeInsets.only(left: 10.0),
                             child: Icon(Icons.delete),
                           ),
                           alignment: Alignment.centerLeft,

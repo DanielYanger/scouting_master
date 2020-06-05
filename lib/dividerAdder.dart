@@ -94,16 +94,13 @@ class PreviewDividerState extends State<PreviewDivider> {
               child: Text("Confirm"),
               onPressed: () {
                 formCreator.addComponent(
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Container(
-                      height: 30 + widget.fontSize,
-                      child: Card(
-                        child: Center(
-                          child: Text(
-                            '${widget.attribute}',
-                            style: TextStyle(fontSize: widget.fontSize),
-                          ),
+                  Container(
+                    height: 30 + widget.fontSize,
+                    child: Card(
+                      child: Center(
+                        child: Text(
+                          '${widget.attribute}',
+                          style: TextStyle(fontSize: widget.fontSize),
                         ),
                       ),
                     ),
