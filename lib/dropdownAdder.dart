@@ -35,7 +35,7 @@ class DropdownAdderPageState extends State<DropdownAdderPage> {
                 isThreeLine: true,
               ),
               ListTile(
-                title: Text("Options: Seperate with commas"),
+                title: Text("Options: Separate with commas"),
                 subtitle: TextField(
                   controller: _optionsController,
                 ),
