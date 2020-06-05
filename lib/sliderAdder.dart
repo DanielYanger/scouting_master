@@ -52,7 +52,7 @@ class SliderAdderPageState extends State<SliderAdderPage> {
                 isThreeLine: true,
               ),
               ListTile(
-                title: Text("Inital Value"),
+                title: Text("Initial Value"),
                 subtitle: TextField(
                   controller: _initialValueController,
                   keyboardType: TextInputType.number,
