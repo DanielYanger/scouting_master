@@ -35,6 +35,7 @@ class DividerAdderPageState extends State<DividerAdderPage> {
                 title: Text("Font Size"),
                 subtitle: TextField(
                   controller: _fontSizeController,
+                  keyboardType: TextInputType.number,
                 ),
                 isThreeLine: true,
               ),
