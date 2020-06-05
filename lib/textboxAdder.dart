@@ -83,9 +83,9 @@ class PreviewTextboxState extends State<PreviewTextbox> {
               child: Text("Confirm"),
               onPressed: () {
                 formCreator.addComponent(
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Card(
                       child: FormBuilderTextField(
                         attribute: "${widget.attribute}",
                         decoration: InputDecoration(
