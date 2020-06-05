@@ -61,7 +61,6 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                         setState(() {
                           details.removeAt(form.indexOf(i));
                           form.remove(i);
-                          print(details);
                         });
                       },
                       background: Padding(
@@ -116,7 +115,6 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                     form.insert(newIndex, item);
                     final detail = details.removeAt(oldIndex);
                     details.insert(newIndex, detail);
-                    print(details);
                   });
                 },
               )

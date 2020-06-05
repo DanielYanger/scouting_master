@@ -14,6 +14,7 @@ class DividerAdderPage extends StatefulWidget {
 class DividerAdderPageState extends State<DividerAdderPage> {
   var _attributeController = new TextEditingController();
   var _fontSizeController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

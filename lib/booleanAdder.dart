@@ -14,6 +14,7 @@ class BooleanAdderPage extends StatefulWidget {
 
 class BooleanAdderState extends State<BooleanAdderPage> {
   var _attributeController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

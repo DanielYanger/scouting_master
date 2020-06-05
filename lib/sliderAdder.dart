@@ -18,6 +18,7 @@ class SliderAdderPageState extends State<SliderAdderPage> {
   var _maxController = new TextEditingController();
   var _initialValueController = new TextEditingController();
   var _divisionController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
