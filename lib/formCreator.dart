@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:scoutingmaster/scouting_icons_icons.dart';
 
 import 'componentSelector.dart';
 import 'settings.dart';
@@ -28,6 +29,10 @@ class FormCreatorPageState extends State<FormCreatorPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("624 Form Creator"),
+        leading: Icon(
+          ScoutingIcons.radioactive,
+          size: 50,
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.more_vert),
@@ -123,10 +128,21 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                   Card(
                     child: ListTile(
                       title: Center(child: Text("No Form Detected")),
-                      subtitle: Center(
-                          child: Text(
-                              "Start creating a form by clicking the + button below.")),
+                      subtitle: Text(
+                        "Start creating a form by clicking the + button below.",
+                        textAlign: TextAlign.center,
+                      ),
                       isThreeLine: true,
+                      leading: Icon(
+                        Icons.warning,
+                        size: 50,
+                        color: Colors.red,
+                      ),
+                      trailing: Icon(
+                        Icons.warning,
+                        size: 50,
+                        color: Colors.red,
+                      ),
                     ),
                   )
                 ],

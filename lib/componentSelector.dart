@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoutingmaster/dividerAdder.dart';
 import 'package:scoutingmaster/radioAdder.dart';
+import 'package:scoutingmaster/scouting_icons_icons.dart';
 
 import 'booleanAdder.dart';
 import 'checkboxAdder.dart';
@@ -34,7 +35,7 @@ class ComponentSelectorPageState extends State<ComponentSelectorPage> {
                 title: Text("Divider"),
                 subtitle: Text("Insert a labeled divier"),
                 leading: Icon(
-                  Icons.title,
+                  ScoutingIcons.divider,
                   size: 50,
                 ),
                 onTap: () {
@@ -66,7 +67,7 @@ class ComponentSelectorPageState extends State<ComponentSelectorPage> {
                 title: Text("Radio"),
                 subtitle: Text("Insert a radio"),
                 leading: Icon(
-                  Icons.check_circle_outline,
+                  ScoutingIcons.radio_button,
                   size: 50,
                 ),
                 onTap: () {
@@ -82,7 +83,7 @@ class ComponentSelectorPageState extends State<ComponentSelectorPage> {
                 title: Text("Counter"),
                 subtitle: Text("Insert a counter"),
                 leading: Icon(
-                  Icons.arrow_drop_up,
+                  ScoutingIcons.counter,
                   size: 50,
                 ),
                 onTap: () {
@@ -98,7 +99,7 @@ class ComponentSelectorPageState extends State<ComponentSelectorPage> {
                 title: Text("Slider"),
                 subtitle: Text("Insert a slider"),
                 leading: Icon(
-                  Icons.linear_scale,
+                  ScoutingIcons.sliders,
                   size: 50,
                 ),
                 onTap: () {
@@ -131,7 +132,7 @@ class ComponentSelectorPageState extends State<ComponentSelectorPage> {
                 title: Text("Dropdown"),
                 subtitle: Text("Insert a dropdown"),
                 leading: Icon(
-                  Icons.arrow_drop_down,
+                  ScoutingIcons.down_arrow,
                   size: 50,
                 ),
                 onTap: () {
