@@ -34,7 +34,7 @@ class CheckboxAdderPageState extends State<CheckboxAdderPage> {
                 isThreeLine: true,
               ),
               ListTile(
-                title: Text("Options: Seperate with commas"),
+                title: Text("Options: Separate with commas"),
                 subtitle: TextField(
                   controller: _optionsController,
                 ),
@@ -104,7 +104,6 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
             FormBuilderCheckboxList(
               decoration: InputDecoration(labelText: '${widget.attribute}'),
               attribute: "${widget.attribute}",
-              leadingInput: true,
               options: createSet(widget.values),
               initialValue: [],
             ),
@@ -120,7 +119,6 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
                         decoration:
                             InputDecoration(labelText: '${widget.attribute}'),
                         attribute: "${widget.attribute}",
-                        leadingInput: true,
                         options: createSet(widget.values),
                         initialValue: [],
                       ),
