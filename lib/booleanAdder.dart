@@ -69,13 +69,12 @@ class PreviewBooleanState extends State<PreviewBoolean> {
         title: Text("Preview Boolean Component"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
             FormBuilderRadio(
               decoration: InputDecoration(labelText: '${widget.attribute}'),
               attribute: "${widget.attribute}",
-              leadingInput: true,
               initialValue: "Yes",
               validators: [FormBuilderValidators.required()],
               options: ["Yes", "No"]
@@ -89,25 +88,21 @@ class PreviewBooleanState extends State<PreviewBoolean> {
               child: Text("Confirm"),
               onPressed: () {
                 formCreator.addComponent(
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Card(
-                      child: Container(
-                        height: 136,
-                        child: FormBuilderRadio(
-                          decoration:
-                              InputDecoration(labelText: '${widget.attribute}'),
-                          attribute: "${widget.attribute}",
-                          initialValue: "Yes",
-                          leadingInput: true,
-                          validators: [FormBuilderValidators.required()],
-                          options: ["Yes", "No"]
-                              .map((lang) => FormBuilderFieldOption(
-                                    value: lang,
-                                    child: Text('$lang'),
-                                  ))
-                              .toList(growable: false),
-                        ),
+                  Card(
+                    child: Container(
+                      height: 136,
+                      child: FormBuilderRadio(
+                        decoration:
+                            InputDecoration(labelText: '${widget.attribute}'),
+                        attribute: "${widget.attribute}",
+                        initialValue: "Yes",
+                        validators: [FormBuilderValidators.required()],
+                        options: ["Yes", "No"]
+                            .map((lang) => FormBuilderFieldOption(
+                                  value: lang,
+                                  child: Text('$lang'),
+                                ))
+                            .toList(growable: false),
                       ),
                     ),
                     key: ValueKey(widget.attribute),
