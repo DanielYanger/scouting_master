@@ -6,6 +6,9 @@ import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
 class BooleanAdderPage extends StatefulWidget {
+  String attribute;
+  BooleanAdderPage({Key key, this.attribute});
+
   @override
   BooleanAdderState createState() {
     return BooleanAdderState();
@@ -13,10 +16,10 @@ class BooleanAdderPage extends StatefulWidget {
 }
 
 class BooleanAdderState extends State<BooleanAdderPage> {
-  var _attributeController = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    var _attributeController =
+        new TextEditingController(text: widget.attribute);
     return Scaffold(
         appBar: AppBar(
           title: Text("Add Boolean Component"),
