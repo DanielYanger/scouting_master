@@ -22,7 +22,7 @@ class BooleanAdderState extends State<BooleanAdderPage> {
         new TextEditingController(text: widget.attribute);
     return Scaffold(
         appBar: AppBar(
-          title: Text("Add Boolean Component"),
+          title: Text("Boolean Component"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),

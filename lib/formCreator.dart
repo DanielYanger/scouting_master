@@ -25,9 +25,13 @@ void addDetails(List<String> item) {
 }
 
 Widget editForm(List<String> details) {
-  return BooleanAdderPage(
-    attribute: details[1],
-  );
+  if (details[0] == "FormBuilderBoolean") {
+    return BooleanAdderPage(
+      attribute: details[1],
+    );
+  } else {
+    return BooleanAdderPage();
+  }
 }
 
 class FormCreatorPageState extends State<FormCreatorPage> {
@@ -82,10 +86,11 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                             details.removeAt(form.indexOf(i));
                             form.remove(i);
                           });
-                          Navigator.push(
+                          Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => editForm(temp)),
+                            (Route<dynamic> route) => false,
                           );
                         }
                       },
@@ -149,7 +154,27 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                             },
                           );
                         } else {
-                          return true;
+                          return await showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text("Confirm"),
+                                content: const Text(
+                                    "Are you sure you wish to edit this item?"),
+                                actions: <Widget>[
+                                  FlatButton(
+                                      onPressed: () =>
+                                          Navigator.of(context).pop(true),
+                                      child: const Text("EDIT")),
+                                  FlatButton(
+                                    onPressed: () =>
+                                        Navigator.of(context).pop(false),
+                                    child: const Text("CANCEL"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
                         }
                       },
                     )
