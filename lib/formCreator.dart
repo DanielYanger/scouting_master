@@ -4,6 +4,7 @@ import 'package:scoutingmaster/scouting_icons_icons.dart';
 
 import 'componentSelector.dart';
 import 'settings.dart';
+import 'booleanAdder.dart';
 
 class FormCreatorPage extends StatefulWidget {
   @override
@@ -21,6 +22,12 @@ void addComponent(Widget item) {
 
 void addDetails(List<String> item) {
   details.add(item);
+}
+
+Widget editForm(List<String> details) {
+  return BooleanAdderPage(
+    attribute: details[1],
+  );
 }
 
 class FormCreatorPageState extends State<FormCreatorPage> {
@@ -57,16 +64,30 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                   for (Widget i in form)
                     Dismissible(
                       child: i,
-                      direction: DismissDirection.startToEnd,
+                      direction: DismissDirection.horizontal,
                       dismissThresholds: {
-                        DismissDirection.startToEnd: 0.2,
+                        DismissDirection.startToEnd: 0.3,
+                        DismissDirection.endToStart: 0.3,
                       },
                       key: ValueKey(i.key),
-                      onDismissed: (left) {
-                        setState(() {
-                          details.removeAt(form.indexOf(i));
-                          form.remove(i);
-                        });
+                      onDismissed: (direction) {
+                        if (direction == DismissDirection.startToEnd) {
+                          setState(() {
+                            details.removeAt(form.indexOf(i));
+                            form.remove(i);
+                          });
+                        } else if (direction == DismissDirection.endToStart) {
+                          List<String> temp = details[form.indexOf(i)];
+                          setState(() {
+                            details.removeAt(form.indexOf(i));
+                            form.remove(i);
+                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => editForm(temp)),
+                          );
+                        }
                       },
                       background: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -86,28 +107,50 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                           alignment: Alignment.centerLeft,
                         ),
                       ),
+                      secondaryBackground: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: new BoxDecoration(
+                              color: Colors.amber,
+                              borderRadius: new BorderRadius.only(
+                                bottomRight: const Radius.circular(10.0),
+                                topRight: const Radius.circular(10.0),
+                                bottomLeft: const Radius.circular(10.0),
+                                topLeft: const Radius.circular(10.0),
+                              )),
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 10.0),
+                            child: Icon(Icons.edit),
+                          ),
+                          alignment: Alignment.centerRight,
+                        ),
+                      ),
                       confirmDismiss: (DismissDirection direction) async {
-                        return await showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text("Confirm"),
-                              content: const Text(
-                                  "Are you sure you wish to delete this item?"),
-                              actions: <Widget>[
-                                FlatButton(
+                        if (direction == DismissDirection.startToEnd) {
+                          return await showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text("Confirm"),
+                                content: const Text(
+                                    "Are you sure you wish to delete this item?"),
+                                actions: <Widget>[
+                                  FlatButton(
+                                      onPressed: () =>
+                                          Navigator.of(context).pop(true),
+                                      child: const Text("DELETE")),
+                                  FlatButton(
                                     onPressed: () =>
-                                        Navigator.of(context).pop(true),
-                                    child: const Text("DELETE")),
-                                FlatButton(
-                                  onPressed: () =>
-                                      Navigator.of(context).pop(false),
-                                  child: const Text("CANCEL"),
-                                ),
-                              ],
-                            );
-                          },
-                        );
+                                        Navigator.of(context).pop(false),
+                                    child: const Text("CANCEL"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        } else {
+                          return true;
+                        }
                       },
                     )
                 ],
