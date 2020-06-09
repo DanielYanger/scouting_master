@@ -27,7 +27,7 @@ class DividerAdderPageState extends State<DividerAdderPage> {
     var edit = widget.attribute != null;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Divider Component"),
+        title: Text("Divider Component"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

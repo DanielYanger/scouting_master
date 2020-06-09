@@ -26,7 +26,7 @@ class CounterAdderPageState extends State<CounterAdderPage> {
     var index = widget.index;
     return Scaffold(
         appBar: AppBar(
-          title: Text("Add Counter Component"),
+          title: Text("Counter Component"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
