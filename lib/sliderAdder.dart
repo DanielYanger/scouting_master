@@ -95,20 +95,45 @@ class SliderAdderPageState extends State<SliderAdderPage> {
                 title: RaisedButton(
                   child: Text("Create"),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => PreviewSlider(
-                                attribute: _attributeController.text,
-                                min: double.parse(_minController.text),
-                                max: double.parse(_maxController.text),
-                                initial:
-                                    double.parse(_initialValueController.text),
-                                divisions: int.parse(_divisionController.text),
-                                edit: edit,
-                                index: widget.index,
-                              )),
-                    );
+                    if (double.parse(_minController.text) <=
+                            double.parse(_initialValueController.text) &&
+                        double.parse(_initialValueController.text) <=
+                            double.parse(_maxController.text) &&
+                        _attributeController != null &&
+                        _divisionController.text.indexOf(".") == -1) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PreviewSlider(
+                                  attribute: _attributeController.text,
+                                  min: double.parse(_minController.text),
+                                  max: double.parse(_maxController.text),
+                                  initial: double.parse(
+                                      _initialValueController.text),
+                                  divisions:
+                                      int.parse(_divisionController.text),
+                                  edit: edit,
+                                  index: widget.index,
+                                )),
+                      );
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text("Error"),
+                            content: const Text(
+                                "Please make sure that the numbers are valid."),
+                            actions: <Widget>[
+                              FlatButton(
+                                onPressed: () => Navigator.of(context).pop(),
+                                child: const Text("RETURN"),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
                   },
                 ),
               ),
