@@ -5,7 +5,19 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
+// ignore: must_be_immutable
 class DropdownAdderPage extends StatefulWidget {
+  String attribute;
+  String hint;
+  List<String> options;
+  int index;
+  DropdownAdderPage({
+    Key key,
+    this.attribute,
+    this.options,
+    this.index,
+    this.hint,
+  }) : super(key: key);
   @override
   DropdownAdderPageState createState() {
     return DropdownAdderPageState();
@@ -13,15 +25,23 @@ class DropdownAdderPage extends StatefulWidget {
 }
 
 class DropdownAdderPageState extends State<DropdownAdderPage> {
-  var _attributeController = new TextEditingController();
-  var _optionsController = new TextEditingController();
-  var _hintController = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    var _attributeController =
+        new TextEditingController(text: widget.attribute);
+    var _hintController = new TextEditingController(text: widget.hint);
+    bool edit = widget.attribute != null;
+    String listOptions = "";
+    if (edit) {
+      for (String i in widget.options) {
+        listOptions += i + ",";
+      }
+      listOptions = listOptions.substring(0, listOptions.length - 1);
+    }
+    var _optionsController = new TextEditingController(text: listOptions);
     return Scaffold(
         appBar: AppBar(
-          title: Text("Add Dropdown Component"),
+          title: Text("Dropdown Component"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -59,6 +79,8 @@ class DropdownAdderPageState extends State<DropdownAdderPage> {
                                 attribute: _attributeController.text,
                                 values: _optionsController.text,
                                 hint: _hintController.text,
+                                index: widget.index,
+                                edit: edit,
                               )),
                     );
                   },
@@ -88,9 +110,17 @@ class PreviewDropdown extends StatefulWidget {
   String attribute;
   String values;
   String hint;
+  int index;
+  bool edit;
 
-  PreviewDropdown({Key key, this.attribute, this.values, this.hint})
-      : super(key: key);
+  PreviewDropdown({
+    Key key,
+    this.attribute,
+    this.values,
+    this.hint,
+    this.edit,
+    this.index,
+  }) : super(key: key);
 
   @override
   PreviewDropdownState createState() => PreviewDropdownState();
@@ -129,34 +159,72 @@ class PreviewDropdownState extends State<PreviewDropdown> {
             RaisedButton(
               child: Text("Confirm"),
               onPressed: () {
-                formCreator.addComponent(
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Container(
-                      height: 65,
-                      child: Card(
-                        child: FormBuilderDropdown(
-                          attribute: "${widget.attribute}",
-                          decoration: InputDecoration(
-                            labelText: "${widget.attribute}",
+                if (!widget.edit) {
+                  formCreator.addComponent(
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Container(
+                        height: 65,
+                        child: Card(
+                          child: FormBuilderDropdown(
+                            attribute: "${widget.attribute}",
+                            decoration: InputDecoration(
+                              labelText: "${widget.attribute}",
+                            ),
+                            hint: Text('${widget.hint}'),
+                            validators: [FormBuilderValidators.required()],
+                            items: createSet(widget.values.split(',')),
+                            initialValue: widget.values.split(',')[0],
                           ),
-                          hint: Text('${widget.hint}'),
-                          validators: [FormBuilderValidators.required()],
-                          items: createSet(widget.values.split(',')),
-                          initialValue: widget.values.split(',')[0],
                         ),
                       ),
+                      key: ValueKey(widget.attribute),
                     ),
-                    key: ValueKey(widget.attribute),
-                  ),
-                );
-                formCreator.addDetails(exporter(
-                    widget.attribute, widget.hint, widget.values.split(",")));
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                  (Route<dynamic> route) => false,
-                );
+                  );
+                  formCreator.addDetails(exporter(
+                      widget.attribute, widget.hint, widget.values.split(",")));
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                } else {
+                  formCreator.editComponent(
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Container(
+                        height: 65,
+                        child: Card(
+                          child: FormBuilderDropdown(
+                            attribute: "${widget.attribute}",
+                            decoration: InputDecoration(
+                              labelText: "${widget.attribute}",
+                            ),
+                            hint: Text('${widget.hint}'),
+                            validators: [FormBuilderValidators.required()],
+                            items: createSet(widget.values.split(',')),
+                            initialValue: widget.values.split(',')[0],
+                          ),
+                        ),
+                      ),
+                      key: ValueKey(widget.attribute),
+                    ),
+                    widget.index,
+                  );
+                  formCreator.editDetails(
+                    exporter(
+                      widget.attribute,
+                      widget.hint,
+                      widget.values.split(","),
+                    ),
+                    widget.index,
+                  );
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                }
               },
             ),
           ],

@@ -9,6 +9,7 @@ import 'counterAdder.dart';
 import 'dividerAdder.dart';
 import 'textboxAdder.dart';
 import 'checkboxAdder.dart';
+import 'dropdownAdder.dart';
 
 class FormCreatorPage extends StatefulWidget {
   @override
@@ -62,6 +63,13 @@ Widget editForm(List<String> details, int index) {
     return CheckboxAdderPage(
       attribute: details[1],
       options: details.sublist(2),
+      index: index,
+    );
+  } else if (details[0] == "FormBuilderDropdown") {
+    return DropdownAdderPage(
+      attribute: details[1],
+      hint: details[2],
+      options: details.sublist(3),
       index: index,
     );
   } else {
