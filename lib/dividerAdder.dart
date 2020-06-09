@@ -52,17 +52,19 @@ class DividerAdderPageState extends State<DividerAdderPage> {
               title: RaisedButton(
                 child: Text("Create"),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PreviewDivider(
-                        attribute: _attributeController.text,
-                        fontSize: double.parse(_fontSizeController.text),
-                        index: widget.index,
-                        edit: edit,
+                  if (!double.parse(_fontSizeController.text).isNaN) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PreviewDivider(
+                          attribute: _attributeController.text,
+                          fontSize: double.parse(_fontSizeController.text),
+                          index: widget.index,
+                          edit: edit,
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  }
                 },
               ),
             ),
