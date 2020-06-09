@@ -11,6 +11,7 @@ import 'textboxAdder.dart';
 import 'checkboxAdder.dart';
 import 'dropdownAdder.dart';
 import 'radioAdder.dart';
+import 'sliderAdder.dart';
 
 class FormCreatorPage extends StatefulWidget {
   @override
@@ -38,6 +39,7 @@ void editDetails(List<String> item, int index) {
   details[index] = item;
 }
 
+// ignore: missing_return
 Widget editForm(List<String> details, int index) {
   if (details[0] == "FormBuilderBoolean") {
     return BooleanAdderPage(
@@ -79,8 +81,15 @@ Widget editForm(List<String> details, int index) {
       options: details.sublist(2),
       index: index,
     );
-  } else {
-    return BooleanAdderPage();
+  } else if (details[0] == "FormBuilderSlider") {
+    return SliderAdderPage(
+      attribute: details[1],
+      min: double.parse(details[2]),
+      max: double.parse(details[3]),
+      initialValue: double.parse(details[4]),
+      divisions: int.parse(details[5]),
+      index: index,
+    );
   }
 }
 
