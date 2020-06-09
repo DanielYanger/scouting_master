@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
+// ignore: must_be_immutable
 class DividerAdderPage extends StatefulWidget {
+  String attribute;
+  double fontSize;
+  int index;
+  DividerAdderPage({Key key, this.attribute, this.fontSize, this.index});
   @override
   DividerAdderPageState createState() {
     return DividerAdderPageState();
@@ -12,53 +17,59 @@ class DividerAdderPage extends StatefulWidget {
 }
 
 class DividerAdderPageState extends State<DividerAdderPage> {
-  var _attributeController = new TextEditingController();
-  var _fontSizeController = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    String fontSize =
+        widget.fontSize != null ? widget.fontSize.toString() : null;
+    var _attributeController =
+        new TextEditingController(text: widget.attribute);
+    var _fontSizeController = new TextEditingController(text: fontSize);
+    var edit = widget.attribute != null;
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Add Divider Component"),
+      appBar: AppBar(
+        title: Text("Add Divider Component"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text("Label"),
+              subtitle: TextField(
+                controller: _attributeController,
+              ),
+              isThreeLine: true,
+            ),
+            ListTile(
+              title: Text("Font Size"),
+              subtitle: TextField(
+                controller: _fontSizeController,
+                keyboardType: TextInputType.number,
+              ),
+              isThreeLine: true,
+            ),
+            ListTile(
+              title: RaisedButton(
+                child: Text("Create"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PreviewDivider(
+                        attribute: _attributeController.text,
+                        fontSize: double.parse(_fontSizeController.text),
+                        index: widget.index,
+                        edit: edit,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            children: <Widget>[
-              ListTile(
-                title: Text("Label"),
-                subtitle: TextField(
-                  controller: _attributeController,
-                ),
-                isThreeLine: true,
-              ),
-              ListTile(
-                title: Text("Font Size"),
-                subtitle: TextField(
-                  controller: _fontSizeController,
-                  keyboardType: TextInputType.number,
-                ),
-                isThreeLine: true,
-              ),
-              ListTile(
-                title: RaisedButton(
-                  child: Text("Create"),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => PreviewDivider(
-                                attribute: _attributeController.text,
-                                fontSize:
-                                    double.parse(_fontSizeController.text),
-                              )),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ));
+      ),
+    );
   }
 }
 
@@ -66,8 +77,11 @@ class DividerAdderPageState extends State<DividerAdderPage> {
 class PreviewDivider extends StatefulWidget {
   String attribute;
   double fontSize;
-
-  PreviewDivider({Key key, this.attribute, this.fontSize}) : super(key: key);
+  bool edit;
+  int index;
+  PreviewDivider(
+      {Key key, this.attribute, this.fontSize, this.edit, this.index})
+      : super(key: key);
 
   @override
   PreviewDividerState createState() => PreviewDividerState();
@@ -95,30 +109,61 @@ class PreviewDividerState extends State<PreviewDivider> {
             RaisedButton(
               child: Text("Confirm"),
               onPressed: () {
-                formCreator.addComponent(
-                  Container(
-                    height: 30 + widget.fontSize,
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          '${widget.attribute}',
-                          style: TextStyle(fontSize: widget.fontSize),
+                if (!widget.edit) {
+                  formCreator.addComponent(
+                    Container(
+                      height: 30 + widget.fontSize,
+                      child: Card(
+                        child: Center(
+                          child: Text(
+                            '${widget.attribute}',
+                            style: TextStyle(fontSize: widget.fontSize),
+                          ),
                         ),
                       ),
+                      key: Key(widget.attribute),
                     ),
-                    key: Key(widget.attribute),
-                  ),
-                );
-                formCreator.addDetails([
-                  "Divider",
-                  "${widget.attribute}",
-                  widget.fontSize.toString()
-                ]);
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                  (Route<dynamic> route) => false,
-                );
+                  );
+                  formCreator.addDetails([
+                    "Divider",
+                    "${widget.attribute}",
+                    widget.fontSize.toString()
+                  ]);
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                } else {
+                  formCreator.editComponent(
+                    Container(
+                      height: 30 + widget.fontSize,
+                      child: Card(
+                        child: Center(
+                          child: Text(
+                            '${widget.attribute}',
+                            style: TextStyle(fontSize: widget.fontSize),
+                          ),
+                        ),
+                      ),
+                      key: Key(widget.attribute),
+                    ),
+                    widget.index,
+                  );
+                  formCreator.editDetails(
+                    [
+                      "Divider",
+                      "${widget.attribute}",
+                      widget.fontSize.toString()
+                    ],
+                    widget.index,
+                  );
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                }
               },
             ),
           ],
