@@ -5,7 +5,12 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
+// ignore: must_be_immutable
 class TextboxAdderPage extends StatefulWidget {
+  String attribute;
+  int index;
+  TextboxAdderPage({Key key, this.attribute, this.index});
+
   @override
   TextboxAdderPageState createState() {
     return TextboxAdderPageState();
@@ -13,13 +18,13 @@ class TextboxAdderPage extends StatefulWidget {
 }
 
 class TextboxAdderPageState extends State<TextboxAdderPage> {
-  var _attributeController = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    var _attributeController =
+        new TextEditingController(text: widget.attribute);
     return Scaffold(
         appBar: AppBar(
-          title: Text("Add Textbox Component"),
+          title: Text("Textbox Component"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -39,9 +44,12 @@ class TextboxAdderPageState extends State<TextboxAdderPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => PreviewTextbox(
-                                attribute: _attributeController.text,
-                              )),
+                        builder: (context) => PreviewTextbox(
+                          attribute: _attributeController.text,
+                          edit: widget.attribute != null,
+                          index: widget.index,
+                        ),
+                      ),
                     );
                   },
                 ),
@@ -55,8 +63,10 @@ class TextboxAdderPageState extends State<TextboxAdderPage> {
 // ignore: must_be_immutable
 class PreviewTextbox extends StatefulWidget {
   String attribute;
-
-  PreviewTextbox({Key key, this.attribute}) : super(key: key);
+  int index;
+  bool edit;
+  PreviewTextbox({Key key, this.attribute, this.index, this.edit})
+      : super(key: key);
 
   @override
   PreviewTextboxState createState() => PreviewTextboxState();
@@ -79,35 +89,66 @@ class PreviewTextboxState extends State<PreviewTextbox> {
                 labelText: "${widget.attribute}",
               ),
               initialValue: "",
+              readOnly: true,
             ),
             RaisedButton(
               child: Text("Confirm"),
               onPressed: () {
-                formCreator.addComponent(
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: FormBuilderTextField(
-                        attribute: "${widget.attribute}",
-                        decoration: InputDecoration(
-                          labelText: "${widget.attribute}",
+                if (!widget.edit) {
+                  formCreator.addComponent(
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: FormBuilderTextField(
+                          attribute: "${widget.attribute}",
+                          decoration: InputDecoration(
+                            labelText: "${widget.attribute}",
+                          ),
+                          initialValue: "",
+                          readOnly: true,
                         ),
-                        initialValue: "",
                       ),
+                      key: Key(widget.attribute),
                     ),
-                    key: Key(widget.attribute),
-                  ),
-                );
-                List<String> a = [
-                  "FormBuilderTextField",
-                  "${widget.attribute}"
-                ];
-                formCreator.addDetails(a);
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                  (Route<dynamic> route) => false,
-                );
+                  );
+                  List<String> a = [
+                    "FormBuilderTextField",
+                    "${widget.attribute}"
+                  ];
+                  formCreator.addDetails(a);
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                } else {
+                  formCreator.editComponent(
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: FormBuilderTextField(
+                          attribute: "${widget.attribute}",
+                          decoration: InputDecoration(
+                            labelText: "${widget.attribute}",
+                          ),
+                          initialValue: "",
+                          readOnly: true,
+                        ),
+                      ),
+                      key: Key(widget.attribute),
+                    ),
+                    widget.index,
+                  );
+                  formCreator.editDetails(
+                    ["FormBuilderTextField", "${widget.attribute}"],
+                    widget.index,
+                  );
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                }
               },
             ),
           ],

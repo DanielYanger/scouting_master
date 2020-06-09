@@ -7,6 +7,7 @@ import 'settings.dart';
 import 'booleanAdder.dart';
 import 'counterAdder.dart';
 import 'dividerAdder.dart';
+import 'textboxAdder.dart';
 
 class FormCreatorPage extends StatefulWidget {
   @override
@@ -49,6 +50,11 @@ Widget editForm(List<String> details, int index) {
     return DividerAdderPage(
       attribute: details[1],
       fontSize: double.parse(details[2]),
+      index: index,
+    );
+  } else if (details[0] == "FormBuilderTextField") {
+    return TextboxAdderPage(
+      attribute: details[1],
       index: index,
     );
   } else {
