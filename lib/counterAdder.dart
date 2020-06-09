@@ -9,6 +9,7 @@ import 'formCreator.dart';
 class CounterAdderPage extends StatefulWidget {
   String attribute;
   int index;
+
   CounterAdderPage({Key key, this.attribute, this.index});
 
   @override

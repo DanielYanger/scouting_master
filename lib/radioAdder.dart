@@ -10,6 +10,7 @@ class RadioAdderPage extends StatefulWidget {
   String attribute;
   List<String> options;
   int index;
+
   RadioAdderPage({
     Key key,
     this.attribute,

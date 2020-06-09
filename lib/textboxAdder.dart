@@ -9,6 +9,7 @@ import 'formCreator.dart';
 class TextboxAdderPage extends StatefulWidget {
   String attribute;
   int index;
+
   TextboxAdderPage({Key key, this.attribute, this.index});
 
   @override
@@ -65,6 +66,7 @@ class PreviewTextbox extends StatefulWidget {
   String attribute;
   int index;
   bool edit;
+
   PreviewTextbox({Key key, this.attribute, this.index, this.edit})
       : super(key: key);
 

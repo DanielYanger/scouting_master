@@ -11,6 +11,7 @@ class DropdownAdderPage extends StatefulWidget {
   String hint;
   List<String> options;
   int index;
+
   DropdownAdderPage({
     Key key,
     this.attribute,
@@ -18,6 +19,7 @@ class DropdownAdderPage extends StatefulWidget {
     this.index,
     this.hint,
   }) : super(key: key);
+
   @override
   DropdownAdderPageState createState() {
     return DropdownAdderPageState();

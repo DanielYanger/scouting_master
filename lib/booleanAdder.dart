@@ -9,6 +9,7 @@ import 'formCreator.dart';
 class BooleanAdderPage extends StatefulWidget {
   String attribute;
   int index;
+
   BooleanAdderPage({Key key, this.attribute, this.index});
 
   @override
@@ -66,6 +67,7 @@ class PreviewBoolean extends StatefulWidget {
   String attribute;
   bool edit;
   int index;
+
   PreviewBoolean({Key key, this.attribute, this.edit, this.index});
 
   @override

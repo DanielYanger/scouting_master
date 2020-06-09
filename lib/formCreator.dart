@@ -2,16 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoutingmaster/scouting_icons_icons.dart';
 
-import 'componentSelector.dart';
-import 'settings.dart';
 import 'booleanAdder.dart';
+import 'checkboxAdder.dart';
+import 'componentSelector.dart';
 import 'counterAdder.dart';
 import 'dividerAdder.dart';
-import 'textboxAdder.dart';
-import 'checkboxAdder.dart';
 import 'dropdownAdder.dart';
 import 'radioAdder.dart';
+import 'settings.dart';
 import 'sliderAdder.dart';
+import 'textboxAdder.dart';
 
 class FormCreatorPage extends StatefulWidget {
   @override

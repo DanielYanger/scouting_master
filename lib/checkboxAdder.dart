@@ -10,12 +10,14 @@ class CheckboxAdderPage extends StatefulWidget {
   String attribute;
   List<String> options;
   int index;
+
   CheckboxAdderPage({
     Key key,
     this.attribute,
     this.options,
     this.index,
   }) : super(key: key);
+
   @override
   CheckboxAdderPageState createState() {
     return CheckboxAdderPageState();

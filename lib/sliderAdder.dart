@@ -13,6 +13,7 @@ class SliderAdderPage extends StatefulWidget {
   double initialValue;
   int divisions;
   int index;
+
   SliderAdderPage({
     Key key,
     this.attribute,

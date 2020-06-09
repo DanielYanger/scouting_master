@@ -9,7 +9,9 @@ class DividerAdderPage extends StatefulWidget {
   String attribute;
   double fontSize;
   int index;
+
   DividerAdderPage({Key key, this.attribute, this.fontSize, this.index});
+
   @override
   DividerAdderPageState createState() {
     return DividerAdderPageState();
@@ -81,6 +83,7 @@ class PreviewDivider extends StatefulWidget {
   double fontSize;
   bool edit;
   int index;
+
   PreviewDivider(
       {Key key, this.attribute, this.fontSize, this.edit, this.index})
       : super(key: key);
