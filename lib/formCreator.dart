@@ -5,6 +5,7 @@ import 'package:scoutingmaster/scouting_icons_icons.dart';
 import 'componentSelector.dart';
 import 'settings.dart';
 import 'booleanAdder.dart';
+import 'counterAdder.dart';
 
 class FormCreatorPage extends StatefulWidget {
   @override
@@ -35,6 +36,11 @@ void editDetails(List<String> item, int index) {
 Widget editForm(List<String> details, int index) {
   if (details[0] == "FormBuilderBoolean") {
     return BooleanAdderPage(
+      attribute: details[1],
+      index: index,
+    );
+  } else if (details[0] == "FormBuilderTouchSpin") {
+    return CounterAdderPage(
       attribute: details[1],
       index: index,
     );
@@ -163,27 +169,7 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                             },
                           );
                         } else {
-                          return await showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text("Confirm"),
-                                content: const Text(
-                                    "Are you sure you wish to edit this item?"),
-                                actions: <Widget>[
-                                  FlatButton(
-                                      onPressed: () =>
-                                          Navigator.of(context).pop(true),
-                                      child: const Text("EDIT")),
-                                  FlatButton(
-                                    onPressed: () =>
-                                        Navigator.of(context).pop(false),
-                                    child: const Text("CANCEL"),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
+                          return true;
                         }
                       },
                     )
