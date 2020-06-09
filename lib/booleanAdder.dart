@@ -7,7 +7,8 @@ import 'formCreator.dart';
 
 class BooleanAdderPage extends StatefulWidget {
   String attribute;
-  BooleanAdderPage({Key key, this.attribute});
+  int index;
+  BooleanAdderPage({Key key, this.attribute, this.index});
 
   @override
   BooleanAdderState createState() {
@@ -20,6 +21,8 @@ class BooleanAdderState extends State<BooleanAdderPage> {
   Widget build(BuildContext context) {
     var _attributeController =
         new TextEditingController(text: widget.attribute);
+    var edit = widget.attribute != null;
+    var index = widget.index;
     return Scaffold(
         appBar: AppBar(
           title: Text("Boolean Component"),
@@ -44,6 +47,8 @@ class BooleanAdderState extends State<BooleanAdderPage> {
                       MaterialPageRoute(
                           builder: (context) => PreviewBoolean(
                                 attribute: _attributeController.text,
+                                edit: edit,
+                                index: index,
                               )),
                     );
                   },
@@ -58,8 +63,9 @@ class BooleanAdderState extends State<BooleanAdderPage> {
 // ignore: must_be_immutable
 class PreviewBoolean extends StatefulWidget {
   String attribute;
-
-  PreviewBoolean({Key key, this.attribute});
+  bool edit;
+  int index;
+  PreviewBoolean({Key key, this.attribute, this.edit, this.index});
 
   @override
   PreviewBooleanState createState() => PreviewBooleanState();
@@ -91,34 +97,68 @@ class PreviewBooleanState extends State<PreviewBoolean> {
             RaisedButton(
               child: Text("Confirm"),
               onPressed: () {
-                formCreator.addComponent(
-                  Card(
-                    child: Container(
-                      height: 136,
-                      child: FormBuilderRadio(
-                        decoration:
-                            InputDecoration(labelText: '${widget.attribute}'),
-                        attribute: "${widget.attribute}",
-                        initialValue: "Yes",
-                        validators: [FormBuilderValidators.required()],
-                        options: ["Yes", "No"]
-                            .map((lang) => FormBuilderFieldOption(
-                                  value: lang,
-                                  child: Text('$lang'),
-                                ))
-                            .toList(growable: false),
+                if (widget.edit == false) {
+                  formCreator.addComponent(
+                    Card(
+                      child: Container(
+                        height: 136,
+                        child: FormBuilderRadio(
+                          decoration:
+                              InputDecoration(labelText: '${widget.attribute}'),
+                          attribute: "${widget.attribute}",
+                          initialValue: "Yes",
+                          validators: [FormBuilderValidators.required()],
+                          options: ["Yes", "No"]
+                              .map((lang) => FormBuilderFieldOption(
+                                    value: lang,
+                                    child: Text('$lang'),
+                                  ))
+                              .toList(growable: false),
+                        ),
                       ),
+                      key: ValueKey(widget.attribute),
                     ),
-                    key: ValueKey(widget.attribute),
-                  ),
-                );
-                formCreator
-                    .addDetails(["FormBuilderBoolean", "${widget.attribute}"]);
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                  (Route<dynamic> route) => false,
-                );
+                  );
+                  formCreator.addDetails(
+                      ["FormBuilderBoolean", "${widget.attribute}"]);
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    ModalRoute.withName('/'),
+                  );
+                } else {
+                  formCreator.editComponent(
+                    Card(
+                      child: Container(
+                        height: 136,
+                        child: FormBuilderRadio(
+                          decoration:
+                              InputDecoration(labelText: '${widget.attribute}'),
+                          attribute: "${widget.attribute}",
+                          initialValue: "Yes",
+                          validators: [FormBuilderValidators.required()],
+                          options: ["Yes", "No"]
+                              .map((lang) => FormBuilderFieldOption(
+                                    value: lang,
+                                    child: Text('$lang'),
+                                  ))
+                              .toList(growable: false),
+                        ),
+                      ),
+                      key: ValueKey(widget.attribute),
+                    ),
+                    widget.index,
+                  );
+                  formCreator.editDetails(
+                    ["FormBuilderBoolean", "${widget.attribute}"],
+                    widget.index,
+                  );
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    ModalRoute.withName('/'),
+                  );
+                }
               },
             ),
           ],

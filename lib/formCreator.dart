@@ -24,10 +24,19 @@ void addDetails(List<String> item) {
   details.add(item);
 }
 
-Widget editForm(List<String> details) {
+void editComponent(Widget item, int index) {
+  form[index] = item;
+}
+
+void editDetails(List<String> item, int index) {
+  details[index] = item;
+}
+
+Widget editForm(List<String> details, int index) {
   if (details[0] == "FormBuilderBoolean") {
     return BooleanAdderPage(
       attribute: details[1],
+      index: index,
     );
   } else {
     return BooleanAdderPage();
@@ -82,14 +91,14 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                           });
                         } else if (direction == DismissDirection.endToStart) {
                           List<String> temp = details[form.indexOf(i)];
-                          setState(() {
-                            details.removeAt(form.indexOf(i));
-                            form.remove(i);
-                          });
                           Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => editForm(temp)),
+                              builder: (context) => editForm(
+                                temp,
+                                form.indexOf(i),
+                              ),
+                            ),
                             (Route<dynamic> route) => false,
                           );
                         }

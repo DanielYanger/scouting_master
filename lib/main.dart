@@ -18,7 +18,10 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: FormCreatorPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => FormCreatorPage(),
+      },
     );
   }
 }
