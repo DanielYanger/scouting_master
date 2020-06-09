@@ -5,7 +5,17 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
+// ignore: must_be_immutable
 class CheckboxAdderPage extends StatefulWidget {
+  String attribute;
+  List<String> options;
+  int index;
+  CheckboxAdderPage({
+    Key key,
+    this.attribute,
+    this.options,
+    this.index,
+  }) : super(key: key);
   @override
   CheckboxAdderPageState createState() {
     return CheckboxAdderPageState();
@@ -13,14 +23,22 @@ class CheckboxAdderPage extends StatefulWidget {
 }
 
 class CheckboxAdderPageState extends State<CheckboxAdderPage> {
-  var _attributeController = new TextEditingController();
-  var _optionsController = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    bool edit = widget.attribute != null;
+    String listOptions = "";
+    if (edit) {
+      for (String i in widget.options) {
+        listOptions += i + ",";
+      }
+      listOptions = listOptions.substring(0, listOptions.length - 1);
+    }
+    var _attributeController =
+        new TextEditingController(text: widget.attribute);
+    var _optionsController = new TextEditingController(text: listOptions);
     return Scaffold(
         appBar: AppBar(
-          title: Text("Add Checkbox Component"),
+          title: Text("Checkbox Component"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -50,6 +68,8 @@ class CheckboxAdderPageState extends State<CheckboxAdderPage> {
                           builder: (context) => PreviewCheckbox(
                                 attribute: _attributeController.text,
                                 values: _optionsController.text.split(","),
+                                index: widget.index,
+                                edit: edit,
                               )),
                     );
                   },
@@ -75,8 +95,11 @@ List<FormBuilderFieldOption> createSet(List<String> list) {
 class PreviewCheckbox extends StatefulWidget {
   String attribute;
   List<String> values;
+  bool edit;
+  int index;
 
-  PreviewCheckbox({Key key, this.attribute, this.values}) : super(key: key);
+  PreviewCheckbox({Key key, this.attribute, this.values, this.edit, this.index})
+      : super(key: key);
 
   @override
   PreviewCheckboxState createState() => PreviewCheckboxState();
@@ -110,29 +133,60 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
             RaisedButton(
               child: Text("Confirm"),
               onPressed: () {
-                formCreator.addComponent(Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Card(
-                    child: Container(
-                      height: 40.0 + 48.0 * widget.values.length,
-                      child: new FormBuilderCheckboxList(
-                        decoration:
-                            InputDecoration(labelText: '${widget.attribute}'),
-                        attribute: "${widget.attribute}",
-                        options: createSet(widget.values),
-                        initialValue: [],
+                if (!widget.edit) {
+                  formCreator.addComponent(Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Card(
+                      child: Container(
+                        height: 40.0 + 48.0 * widget.values.length,
+                        child: new FormBuilderCheckboxList(
+                          decoration:
+                              InputDecoration(labelText: '${widget.attribute}'),
+                          attribute: "${widget.attribute}",
+                          options: createSet(widget.values),
+                          initialValue: [],
+                        ),
                       ),
                     ),
-                  ),
-                  key: Key(widget.attribute),
-                ));
-                formCreator
-                    .addDetails(exporter(widget.attribute, widget.values));
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                  (Route<dynamic> route) => false,
-                );
+                    key: Key(widget.attribute),
+                  ));
+                  formCreator
+                      .addDetails(exporter(widget.attribute, widget.values));
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                } else {
+                  formCreator.editComponent(
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Card(
+                        child: Container(
+                          height: 40.0 + 48.0 * widget.values.length,
+                          child: new FormBuilderCheckboxList(
+                            decoration: InputDecoration(
+                                labelText: '${widget.attribute}'),
+                            attribute: "${widget.attribute}",
+                            options: createSet(widget.values),
+                            initialValue: [],
+                          ),
+                        ),
+                      ),
+                      key: Key(widget.attribute),
+                    ),
+                    widget.index,
+                  );
+                  formCreator.editDetails(
+                    exporter(widget.attribute, widget.values),
+                    widget.index,
+                  );
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                }
               },
             ),
           ],
