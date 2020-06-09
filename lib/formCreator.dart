@@ -10,6 +10,7 @@ import 'dividerAdder.dart';
 import 'textboxAdder.dart';
 import 'checkboxAdder.dart';
 import 'dropdownAdder.dart';
+import 'radioAdder.dart';
 
 class FormCreatorPage extends StatefulWidget {
   @override
@@ -70,6 +71,12 @@ Widget editForm(List<String> details, int index) {
       attribute: details[1],
       hint: details[2],
       options: details.sublist(3),
+      index: index,
+    );
+  } else if (details[0] == "FormBuilderRadio") {
+    return RadioAdderPage(
+      attribute: details[1],
+      options: details.sublist(2),
       index: index,
     );
   } else {

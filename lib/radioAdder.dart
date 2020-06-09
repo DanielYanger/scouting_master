@@ -5,7 +5,18 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'formCreator.dart' as formCreator;
 import 'formCreator.dart';
 
+// ignore: must_be_immutable
 class RadioAdderPage extends StatefulWidget {
+  String attribute;
+  List<String> options;
+  int index;
+  RadioAdderPage({
+    Key key,
+    this.attribute,
+    this.options,
+    this.index,
+  }) : super(key: key);
+
   @override
   RadioAdderPageState createState() {
     return RadioAdderPageState();
@@ -13,11 +24,19 @@ class RadioAdderPage extends StatefulWidget {
 }
 
 class RadioAdderPageState extends State<RadioAdderPage> {
-  var _attributeController = new TextEditingController();
-  var _optionsController = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    var _attributeController =
+        new TextEditingController(text: widget.attribute);
+    bool edit = widget.attribute != null;
+    String listOptions = "";
+    if (edit) {
+      for (String i in widget.options) {
+        listOptions += i + ",";
+      }
+      listOptions = listOptions.substring(0, listOptions.length - 1);
+    }
+    var _optionsController = new TextEditingController(text: listOptions);
     return Scaffold(
         appBar: AppBar(
           title: Text("Add Radio Component"),
@@ -50,6 +69,8 @@ class RadioAdderPageState extends State<RadioAdderPage> {
                           builder: (context) => PreviewRadio(
                                 attribute: _attributeController.text,
                                 values: _optionsController.text.split(","),
+                                index: widget.index,
+                                edit: edit,
                               )),
                     );
                   },
@@ -75,8 +96,16 @@ List<FormBuilderFieldOption> createSet(List<String> list) {
 class PreviewRadio extends StatefulWidget {
   String attribute;
   List<String> values;
+  int index;
+  bool edit;
 
-  PreviewRadio({Key key, this.attribute, this.values}) : super(key: key);
+  PreviewRadio({
+    Key key,
+    this.attribute,
+    this.values,
+    this.index,
+    this.edit,
+  }) : super(key: key);
 
   @override
   PreviewRadioState createState() => PreviewRadioState();
@@ -112,31 +141,64 @@ class PreviewRadioState extends State<PreviewRadio> {
             RaisedButton(
               child: Text("Confirm"),
               onPressed: () {
-                formCreator.addComponent(Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Card(
-                    child: Container(
-                      height: 40.0 + 48.0 * widget.values.length,
-                      child: new FormBuilderRadio(
-                        decoration:
-                            InputDecoration(labelText: '${widget.attribute}'),
-                        attribute: "${widget.attribute}",
-                        leadingInput: true,
-                        validators: [FormBuilderValidators.required()],
-                        options: createSet(widget.values),
-                        initialValue: [],
+                if (!widget.edit) {
+                  formCreator.addComponent(Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Card(
+                      child: Container(
+                        height: 40.0 + 48.0 * widget.values.length,
+                        child: new FormBuilderRadio(
+                          decoration:
+                              InputDecoration(labelText: '${widget.attribute}'),
+                          attribute: "${widget.attribute}",
+                          leadingInput: true,
+                          validators: [FormBuilderValidators.required()],
+                          options: createSet(widget.values),
+                          initialValue: [],
+                        ),
                       ),
                     ),
-                  ),
-                  key: Key(widget.attribute),
-                ));
-                formCreator
-                    .addDetails(exporter(widget.attribute, widget.values));
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                  (Route<dynamic> route) => false,
-                );
+                    key: Key(widget.attribute),
+                  ));
+                  formCreator
+                      .addDetails(exporter(widget.attribute, widget.values));
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                } else {
+                  formCreator.editComponent(
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Card(
+                        child: Container(
+                          height: 40.0 + 48.0 * widget.values.length,
+                          child: new FormBuilderRadio(
+                            decoration: InputDecoration(
+                                labelText: '${widget.attribute}'),
+                            attribute: "${widget.attribute}",
+                            leadingInput: true,
+                            validators: [FormBuilderValidators.required()],
+                            options: createSet(widget.values),
+                            initialValue: [],
+                          ),
+                        ),
+                      ),
+                      key: Key(widget.attribute),
+                    ),
+                    widget.index,
+                  );
+                  formCreator.editDetails(
+                    exporter(widget.attribute, widget.values),
+                    widget.index,
+                  );
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                }
               },
             ),
           ],
