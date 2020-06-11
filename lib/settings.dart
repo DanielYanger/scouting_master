@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoutingmaster/exportForm.dart';
+import 'package:scoutingmaster/scouting_icons_icons.dart';
 
 import 'exportForm.dart';
 import 'formCreator.dart';
@@ -98,6 +99,7 @@ class SettingsPageState extends State<SettingsPage> {
                 ),
                 onTap: () {
                   showAboutDialog(
+                      applicationIcon: Icon(ScoutingIcons.radioactive),
                       context: context,
                       applicationVersion: '1.2.0',
                       applicationLegalese:
