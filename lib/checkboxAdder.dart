@@ -127,6 +127,7 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
         child: Column(
           children: <Widget>[
             FormBuilderCheckboxList(
+              activeColor: Theme.of(context).primaryColor,
               decoration: InputDecoration(labelText: '${widget.attribute}'),
               attribute: "${widget.attribute}",
               options: createSet(widget.values),
@@ -142,6 +143,7 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
                       child: Container(
                         height: 40.0 + 48.0 * widget.values.length,
                         child: new FormBuilderCheckboxList(
+                          activeColor: Theme.of(context).primaryColor,
                           decoration:
                               InputDecoration(labelText: '${widget.attribute}'),
                           attribute: "${widget.attribute}",
@@ -167,6 +169,7 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
                         child: Container(
                           height: 40.0 + 48.0 * widget.values.length,
                           child: new FormBuilderCheckboxList(
+                            activeColor: Theme.of(context).primaryColor,
                             decoration: InputDecoration(
                                 labelText: '${widget.attribute}'),
                             attribute: "${widget.attribute}",

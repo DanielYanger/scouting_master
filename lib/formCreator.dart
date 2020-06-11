@@ -256,6 +256,7 @@ class FormCreatorPageState extends State<FormCreatorPage> {
               ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
           Navigator.push(
             context,

@@ -86,6 +86,7 @@ class PreviewBooleanState extends State<PreviewBoolean> {
         child: Column(
           children: <Widget>[
             FormBuilderRadio(
+              activeColor: Theme.of(context).primaryColor,
               decoration: InputDecoration(labelText: '${widget.attribute}'),
               attribute: "${widget.attribute}",
               initialValue: "Yes",
@@ -106,6 +107,7 @@ class PreviewBooleanState extends State<PreviewBoolean> {
                       child: Container(
                         height: 136,
                         child: FormBuilderRadio(
+                          activeColor: Theme.of(context).primaryColor,
                           decoration:
                               InputDecoration(labelText: '${widget.attribute}'),
                           attribute: "${widget.attribute}",
@@ -135,6 +137,7 @@ class PreviewBooleanState extends State<PreviewBoolean> {
                       child: Container(
                         height: 136,
                         child: FormBuilderRadio(
+                          activeColor: Theme.of(context).primaryColor,
                           decoration:
                               InputDecoration(labelText: '${widget.attribute}'),
                           attribute: "${widget.attribute}",
