@@ -37,7 +37,8 @@ flutter_icons:
   android: "test_icon"
   ios: true
   image_path: "lib/assets/CR_Icon.png"
-
+  adaptive_icon_background: "lib/assets/download.png"
+  adaptive_icon_foreground:  "lib/assets/CR_Icon.png"
 
 
 
