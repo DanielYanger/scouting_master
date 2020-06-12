@@ -1,4 +1,4 @@
-package com.example.scoutingmaster;
+package com.CRyptonite.ScoutingMaster;
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity;
