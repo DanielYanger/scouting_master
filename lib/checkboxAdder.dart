@@ -108,6 +108,8 @@ class PreviewCheckbox extends StatefulWidget {
 }
 
 class PreviewCheckboxState extends State<PreviewCheckbox> {
+  final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+
   static List<String> exporter(String attribute, List<String> values) {
     List<String> finalValue = ["FormBuilderCheckboxList", attribute];
     for (String i in values) {
@@ -122,48 +124,23 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
       appBar: AppBar(
         title: Text("Preview Checkbox Component"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: <Widget>[
-            FormBuilderCheckboxList(
-              activeColor: Theme.of(context).primaryColor,
-              decoration: InputDecoration(labelText: '${widget.attribute}'),
-              attribute: "${widget.attribute}",
-              options: createSet(widget.values),
-              initialValue: [],
-            ),
-            RaisedButton(
-              child: Text("Confirm"),
-              onPressed: () {
-                if (!widget.edit) {
-                  formCreator.addComponent(Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Card(
-                      child: Container(
-                        height: 40.0 + 48.0 * widget.values.length,
-                        child: new FormBuilderCheckboxList(
-                          activeColor: Theme.of(context).primaryColor,
-                          decoration:
-                              InputDecoration(labelText: '${widget.attribute}'),
-                          attribute: "${widget.attribute}",
-                          options: createSet(widget.values),
-                          initialValue: [],
-                        ),
-                      ),
-                    ),
-                    key: Key(widget.attribute),
-                  ));
-                  formCreator
-                      .addDetails(exporter(widget.attribute, widget.values));
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                    (Route<dynamic> route) => false,
-                  );
-                } else {
-                  formCreator.editComponent(
-                    Padding(
+      body: FormBuilder(
+        key: _fbKey,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: <Widget>[
+              FormBuilderCheckboxList(
+                activeColor: Theme.of(context).primaryColor,
+                decoration: InputDecoration(labelText: '${widget.attribute}'),
+                attribute: "${widget.attribute}",
+                options: createSet(widget.values),
+              ),
+              RaisedButton(
+                child: Text("Confirm"),
+                onPressed: () {
+                  if (!widget.edit) {
+                    formCreator.addComponent(Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Card(
                         child: Container(
@@ -174,27 +151,54 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
                                 labelText: '${widget.attribute}'),
                             attribute: "${widget.attribute}",
                             options: createSet(widget.values),
-                            initialValue: [],
                           ),
                         ),
                       ),
                       key: Key(widget.attribute),
-                    ),
-                    widget.index,
-                  );
-                  formCreator.editDetails(
-                    exporter(widget.attribute, widget.values),
-                    widget.index,
-                  );
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                    (Route<dynamic> route) => false,
-                  );
-                }
-              },
-            ),
-          ],
+                    ));
+                    formCreator
+                        .addDetails(exporter(widget.attribute, widget.values));
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FormCreatorPage()),
+                      (Route<dynamic> route) => false,
+                    );
+                  } else {
+                    formCreator.editComponent(
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Card(
+                          child: Container(
+                            height: 40.0 + 48.0 * widget.values.length,
+                            child: new FormBuilderCheckboxList(
+                              activeColor: Theme.of(context).primaryColor,
+                              decoration: InputDecoration(
+                                  labelText: '${widget.attribute}'),
+                              attribute: "${widget.attribute}",
+                              options: createSet(widget.values),
+                            ),
+                          ),
+                        ),
+                        key: Key(widget.attribute),
+                      ),
+                      widget.index,
+                    );
+                    formCreator.editDetails(
+                      exporter(widget.attribute, widget.values),
+                      widget.index,
+                    );
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FormCreatorPage()),
+                      (Route<dynamic> route) => false,
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

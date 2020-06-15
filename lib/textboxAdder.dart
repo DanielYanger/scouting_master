@@ -75,85 +75,89 @@ class PreviewTextbox extends StatefulWidget {
 }
 
 class PreviewTextboxState extends State<PreviewTextbox> {
+  final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Preview Textbox"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: <Widget>[
-            FormBuilderTextField(
-              attribute: "${widget.attribute}",
-              decoration: InputDecoration(
-                labelText: "${widget.attribute}",
+      body: FormBuilder(
+        key: _fbKey,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: <Widget>[
+              FormBuilderTextField(
+                attribute: "${widget.attribute}",
+                decoration: InputDecoration(
+                  labelText: "${widget.attribute}",
+                ),
+                readOnly: true,
               ),
-              initialValue: "",
-              readOnly: true,
-            ),
-            RaisedButton(
-              child: Text("Confirm"),
-              onPressed: () {
-                if (!widget.edit) {
-                  formCreator.addComponent(
-                    Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: FormBuilderTextField(
-                          attribute: "${widget.attribute}",
-                          decoration: InputDecoration(
-                            labelText: "${widget.attribute}",
+              RaisedButton(
+                child: Text("Confirm"),
+                onPressed: () {
+                  if (!widget.edit) {
+                    formCreator.addComponent(
+                      Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FormBuilderTextField(
+                            attribute: "${widget.attribute}",
+                            decoration: InputDecoration(
+                              labelText: "${widget.attribute}",
+                            ),
+                            readOnly: true,
                           ),
-                          initialValue: "",
-                          readOnly: true,
                         ),
+                        key: Key(widget.attribute),
                       ),
-                      key: Key(widget.attribute),
-                    ),
-                  );
-                  List<String> a = [
-                    "FormBuilderTextField",
-                    "${widget.attribute}"
-                  ];
-                  formCreator.addDetails(a);
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                    (Route<dynamic> route) => false,
-                  );
-                } else {
-                  formCreator.editComponent(
-                    Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: FormBuilderTextField(
-                          attribute: "${widget.attribute}",
-                          decoration: InputDecoration(
-                            labelText: "${widget.attribute}",
+                    );
+                    List<String> a = [
+                      "FormBuilderTextField",
+                      "${widget.attribute}"
+                    ];
+                    formCreator.addDetails(a);
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FormCreatorPage()),
+                      (Route<dynamic> route) => false,
+                    );
+                  } else {
+                    formCreator.editComponent(
+                      Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FormBuilderTextField(
+                            attribute: "${widget.attribute}",
+                            decoration: InputDecoration(
+                              labelText: "${widget.attribute}",
+                            ),
+                            readOnly: true,
                           ),
-                          initialValue: "",
-                          readOnly: true,
                         ),
+                        key: Key(widget.attribute),
                       ),
-                      key: Key(widget.attribute),
-                    ),
-                    widget.index,
-                  );
-                  formCreator.editDetails(
-                    ["FormBuilderTextField", "${widget.attribute}"],
-                    widget.index,
-                  );
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                    (Route<dynamic> route) => false,
-                  );
-                }
-              },
-            ),
-          ],
+                      widget.index,
+                    );
+                    formCreator.editDetails(
+                      ["FormBuilderTextField", "${widget.attribute}"],
+                      widget.index,
+                    );
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FormCreatorPage()),
+                      (Route<dynamic> route) => false,
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

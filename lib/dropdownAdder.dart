@@ -129,6 +129,8 @@ class PreviewDropdown extends StatefulWidget {
 }
 
 class PreviewDropdownState extends State<PreviewDropdown> {
+  final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+
   static List<String> exporter(
       String attribute, String hint, List<String> values) {
     List<String> finalValue = ["FormBuilderDropdown", attribute, hint];
@@ -144,92 +146,94 @@ class PreviewDropdownState extends State<PreviewDropdown> {
       appBar: AppBar(
         title: Text("Preview Dropdown Component"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: <Widget>[
-            FormBuilderDropdown(
-              attribute: "${widget.attribute}",
-              decoration: InputDecoration(
-                labelText: "${widget.attribute}",
+      body: FormBuilder(
+        key: _fbKey,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: <Widget>[
+              FormBuilderDropdown(
+                attribute: "${widget.attribute}",
+                decoration: InputDecoration(
+                  labelText: "${widget.attribute}",
+                ),
+                hint: Text('${widget.hint}'),
+                validators: [FormBuilderValidators.required()],
+                items: createSet(widget.values.split(',')),
               ),
-              hint: Text('${widget.hint}'),
-              validators: [FormBuilderValidators.required()],
-              items: createSet(widget.values.split(',')),
-              initialValue: widget.values.split(',')[0],
-            ),
-            RaisedButton(
-              child: Text("Confirm"),
-              onPressed: () {
-                if (!widget.edit) {
-                  formCreator.addComponent(
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Container(
-                        height: 65,
-                        child: Card(
-                          child: FormBuilderDropdown(
-                            attribute: "${widget.attribute}",
-                            decoration: InputDecoration(
-                              labelText: "${widget.attribute}",
+              RaisedButton(
+                child: Text("Confirm"),
+                onPressed: () {
+                  if (!widget.edit) {
+                    formCreator.addComponent(
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Container(
+                          height: 65,
+                          child: Card(
+                            child: FormBuilderDropdown(
+                              attribute: "${widget.attribute}",
+                              decoration: InputDecoration(
+                                labelText: "${widget.attribute}",
+                              ),
+                              hint: Text('${widget.hint}'),
+                              validators: [FormBuilderValidators.required()],
+                              items: createSet(widget.values.split(',')),
                             ),
-                            hint: Text('${widget.hint}'),
-                            validators: [FormBuilderValidators.required()],
-                            items: createSet(widget.values.split(',')),
-                            initialValue: widget.values.split(',')[0],
                           ),
                         ),
+                        key: ValueKey(widget.attribute),
                       ),
-                      key: ValueKey(widget.attribute),
-                    ),
-                  );
-                  formCreator.addDetails(exporter(
-                      widget.attribute, widget.hint, widget.values.split(",")));
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                    (Route<dynamic> route) => false,
-                  );
-                } else {
-                  formCreator.editComponent(
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Container(
-                        height: 65,
-                        child: Card(
-                          child: FormBuilderDropdown(
-                            attribute: "${widget.attribute}",
-                            decoration: InputDecoration(
-                              labelText: "${widget.attribute}",
+                    );
+                    formCreator.addDetails(exporter(widget.attribute,
+                        widget.hint, widget.values.split(",")));
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FormCreatorPage()),
+                      (Route<dynamic> route) => false,
+                    );
+                  } else {
+                    formCreator.editComponent(
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Container(
+                          height: 65,
+                          child: Card(
+                            child: FormBuilderDropdown(
+                              attribute: "${widget.attribute}",
+                              decoration: InputDecoration(
+                                labelText: "${widget.attribute}",
+                              ),
+                              hint: Text('${widget.hint}'),
+                              validators: [FormBuilderValidators.required()],
+                              items: createSet(widget.values.split(',')),
                             ),
-                            hint: Text('${widget.hint}'),
-                            validators: [FormBuilderValidators.required()],
-                            items: createSet(widget.values.split(',')),
-                            initialValue: widget.values.split(',')[0],
                           ),
                         ),
+                        key: ValueKey(widget.attribute),
                       ),
-                      key: ValueKey(widget.attribute),
-                    ),
-                    widget.index,
-                  );
-                  formCreator.editDetails(
-                    exporter(
-                      widget.attribute,
-                      widget.hint,
-                      widget.values.split(","),
-                    ),
-                    widget.index,
-                  );
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => FormCreatorPage()),
-                    (Route<dynamic> route) => false,
-                  );
-                }
-              },
-            ),
-          ],
+                      widget.index,
+                    );
+                    formCreator.editDetails(
+                      exporter(
+                        widget.attribute,
+                        widget.hint,
+                        widget.values.split(","),
+                      ),
+                      widget.index,
+                    );
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FormCreatorPage()),
+                      (Route<dynamic> route) => false,
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
