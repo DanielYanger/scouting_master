@@ -80,7 +80,6 @@ void formCreator(String stringForm, BuildContext context) {
                 leadingInput: true,
                 validators: [FormBuilderValidators.required()],
                 activeColor: Theme.of(context).primaryColor,
-                initialValue: tempWidget[2],
               ),
             ),
           ),
@@ -106,7 +105,6 @@ void formCreator(String stringForm, BuildContext context) {
                 attribute: tempWidget[1],
                 options: createSetCheckbox(options),
                 decoration: InputDecoration(labelText: tempWidget[1]),
-                initialValue: tempWidget[2],
               ),
             ),
           ),
@@ -133,7 +131,6 @@ void formCreator(String stringForm, BuildContext context) {
               validators: [FormBuilderValidators.required()],
               decoration: InputDecoration(labelText: tempWidget[1]),
               activeColor: Theme.of(context).primaryColor,
-              initialValue: "Yes",
             ),
           ),
         ),
@@ -172,7 +169,7 @@ void formCreator(String stringForm, BuildContext context) {
       }
       FormBuilder.addComponent(
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(4.0),
           child: Card(
             child: Container(
               height: 65,
@@ -184,7 +181,6 @@ void formCreator(String stringForm, BuildContext context) {
                 hint: Text(tempWidget[2]),
                 validators: [FormBuilderValidators.required()],
                 items: createSetDropdown(options),
-                initialValue: tempWidget[3],
               ),
             ),
           ),
@@ -219,7 +215,7 @@ void formCreator(String stringForm, BuildContext context) {
 
     else if (tempWidget[0] == "FormBuilderTextField") {
       FormBuilder.addComponent(Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(4.0),
         child: Card(
           child: Container(
             child: FormBuilderTextField(
@@ -261,7 +257,6 @@ void formCreator(String stringForm, BuildContext context) {
 class FormReaderState extends State<FormReader> {
   Future<File> file;
   String stringForm = "";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
