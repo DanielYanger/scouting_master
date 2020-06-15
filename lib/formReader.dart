@@ -170,9 +170,9 @@ void formCreator(String stringForm, BuildContext context) {
       FormBuilder.addComponent(
         Padding(
           padding: const EdgeInsets.all(4.0),
-          child: Card(
-            child: Container(
-              height: 65,
+          child: Container(
+            height: 65,
+            child: Card(
               child: FormBuilderDropdown(
                 attribute: tempWidget[1],
                 decoration: InputDecoration(
