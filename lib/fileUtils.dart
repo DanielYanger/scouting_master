@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:file_picker/file_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
 class FileUtils {
@@ -8,10 +8,14 @@ class FileUtils {
     return directory.path;
   }
 
-  static Future<File> get getFile async {
-    final path = await getFilePath;
-    print(path);
-    return File('$path/myfile.txt');
+  static Future<File> get pickFile async {
+    Future<File> file = FilePicker.getFile(type: FileType.any);
+    return file;
+  }
+
+  static Future<String> readFile(Future<File> file) async {
+    final schedule = await file;
+    return schedule.readAsString();
   }
 
   static Future<File> saveToFile(String data, String title) async {
@@ -31,15 +35,5 @@ class FileUtils {
     print(file.path);
     file.create();
     return "Success";
-  }
-
-  static Future<String> readFromFile() async {
-    try {
-      final file = await getFile;
-      String fileContents = await file.readAsString();
-      return fileContents;
-    } catch (e) {
-      return "";
-    }
   }
 }

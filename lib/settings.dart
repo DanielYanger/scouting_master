@@ -5,6 +5,7 @@ import 'package:scoutingmaster/scouting_icons_icons.dart';
 
 import 'exportForm.dart';
 import 'formCreator.dart';
+import 'formReader.dart';
 
 // ignore: must_be_immutable
 class SettingsPage extends StatefulWidget {
@@ -32,7 +33,6 @@ class SettingsPageState extends State<SettingsPage> {
               child: ListTile(
                 title: Text("Clear Form"),
                 subtitle: Text("Remove all current components."),
-                isThreeLine: true,
                 leading: Icon(
                   Icons.close,
                   size: 50,
@@ -73,7 +73,6 @@ class SettingsPageState extends State<SettingsPage> {
               child: ListTile(
                 title: Text("Export Form"),
                 subtitle: Text("Export the current form."),
-                isThreeLine: true,
                 leading: Icon(
                   Icons.cloud_upload,
                   size: 50,
@@ -90,9 +89,24 @@ class SettingsPageState extends State<SettingsPage> {
             ),
             Card(
               child: ListTile(
+                leading: Icon(
+                  Icons.restore_page,
+                  size: 50,
+                ),
+                title: Text("Import Form"),
+                subtitle: Text("Import an existing form to edit."),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FormReader()),
+                  );
+                },
+              ),
+            ),
+            Card(
+              child: ListTile(
                 title: Text("About the App"),
                 subtitle: Text(""),
-                isThreeLine: true,
                 leading: Icon(
                   Icons.info,
                   size: 50,
@@ -101,7 +115,7 @@ class SettingsPageState extends State<SettingsPage> {
                   showAboutDialog(
                       applicationIcon: Icon(ScoutingIcons.radioactive),
                       context: context,
-                      applicationVersion: '1.2.0',
+                      applicationVersion: '1.4.0',
                       applicationLegalese:
                           "This app was developed by Daniel Yang, a programmer for FRC Team 624. This is one of the two apps developed for the Team 624 Scouting Team for use in many years to come. The purpose of this app is to enable the head scout to create master forms compatable with the Scouter App without the need to learn any code.");
                 },

@@ -39,6 +39,14 @@ void editDetails(List<String> item, int index) {
   details[index] = item;
 }
 
+void clearForm() {
+  form.clear();
+}
+
+void clearDetails() {
+  details.clear();
+}
+
 // ignore: missing_return
 Widget editForm(List<String> details, int index) {
   if (details[0] == "FormBuilderBoolean") {

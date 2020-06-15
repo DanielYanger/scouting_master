@@ -5,6 +5,7 @@ import 'formCreator.dart';
 
 void main() => runApp(MyApp());
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   Map<int, Color> color = {
     50: Color.fromRGBO(6, 240, 0, .1),

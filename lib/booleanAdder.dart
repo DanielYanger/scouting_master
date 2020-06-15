@@ -103,25 +103,28 @@ class PreviewBooleanState extends State<PreviewBoolean> {
               onPressed: () {
                 if (widget.edit == false) {
                   formCreator.addComponent(
-                    Card(
-                      child: Container(
-                        height: 136,
-                        child: FormBuilderRadio(
-                          activeColor: Theme.of(context).primaryColor,
-                          decoration:
-                              InputDecoration(labelText: '${widget.attribute}'),
-                          attribute: "${widget.attribute}",
-                          initialValue: "Yes",
-                          validators: [FormBuilderValidators.required()],
-                          options: ["Yes", "No"]
-                              .map((lang) => FormBuilderFieldOption(
-                                    value: lang,
-                                    child: Text('$lang'),
-                                  ))
-                              .toList(growable: false),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Card(
+                        child: Container(
+                          height: 136,
+                          child: FormBuilderRadio(
+                            activeColor: Theme.of(context).primaryColor,
+                            decoration: InputDecoration(
+                                labelText: '${widget.attribute}'),
+                            attribute: "${widget.attribute}",
+                            initialValue: "Yes",
+                            validators: [FormBuilderValidators.required()],
+                            options: ["Yes", "No"]
+                                .map((lang) => FormBuilderFieldOption(
+                                      value: lang,
+                                      child: Text('$lang'),
+                                    ))
+                                .toList(growable: false),
+                          ),
                         ),
+                        key: ValueKey(widget.attribute),
                       ),
-                      key: ValueKey(widget.attribute),
                     ),
                   );
                   formCreator.addDetails(
