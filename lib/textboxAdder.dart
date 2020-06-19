@@ -101,15 +101,17 @@ class PreviewTextboxState extends State<PreviewTextbox> {
                 onPressed: () {
                   if (!widget.edit) {
                     formCreator.addComponent(
-                      Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FormBuilderTextField(
-                            attribute: "${widget.attribute}",
-                            decoration: InputDecoration(
-                              labelText: "${widget.attribute}",
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Card(
+                          child: Container(
+                            child: FormBuilderTextField(
+                              attribute: "${widget.attribute}",
+                              decoration: InputDecoration(
+                                labelText: "${widget.attribute}",
+                              ),
+                              readOnly: true,
                             ),
-                            readOnly: true,
                           ),
                         ),
                         key: Key(widget.attribute),
@@ -128,15 +130,17 @@ class PreviewTextboxState extends State<PreviewTextbox> {
                     );
                   } else {
                     formCreator.editComponent(
-                      Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FormBuilderTextField(
-                            attribute: "${widget.attribute}",
-                            decoration: InputDecoration(
-                              labelText: "${widget.attribute}",
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Card(
+                          child: Container(
+                            child: FormBuilderTextField(
+                              attribute: "${widget.attribute}",
+                              decoration: InputDecoration(
+                                labelText: "${widget.attribute}",
+                              ),
+                              readOnly: true,
                             ),
-                            readOnly: true,
                           ),
                         ),
                         key: Key(widget.attribute),

@@ -214,20 +214,23 @@ void formCreator(String stringForm, BuildContext context) {
     //break
 
     else if (tempWidget[0] == "FormBuilderTextField") {
-      FormBuilder.addComponent(Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Card(
-          child: Container(
-            child: FormBuilderTextField(
-              attribute: tempWidget[1],
-              decoration: InputDecoration(
-                labelText: tempWidget[1],
+      FormBuilder.addComponent(
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Card(
+            child: Container(
+              child: FormBuilderTextField(
+                attribute: "${tempWidget[1]}",
+                decoration: InputDecoration(
+                  labelText: "${tempWidget[1]}",
+                ),
+                readOnly: true,
               ),
             ),
           ),
+          key: Key(tempWidget[1]),
         ),
-        key: Key(tempWidget[1]),
-      ));
+      );
     }
     //break
 
