@@ -163,7 +163,7 @@ class PreviewRadioState extends State<PreviewRadio> {
                           ),
                         ),
                       ),
-                      key: Key(widget.attribute),
+                      key: ValueKey(widget.attribute),
                     ));
                     formCreator
                         .addDetails(exporter(widget.attribute, widget.values));
@@ -191,7 +191,7 @@ class PreviewRadioState extends State<PreviewRadio> {
                             ),
                           ),
                         ),
-                        key: Key(widget.attribute),
+                        key: ValueKey(widget.attribute),
                       ),
                       widget.index,
                     );

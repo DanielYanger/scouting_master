@@ -126,7 +126,7 @@ class PreviewDividerState extends State<PreviewDivider> {
                           ),
                         ),
                       ),
-                      key: Key(widget.attribute),
+                      key: ValueKey(widget.attribute),
                     ),
                   );
                   formCreator.addDetails([
@@ -151,7 +151,7 @@ class PreviewDividerState extends State<PreviewDivider> {
                           ),
                         ),
                       ),
-                      key: Key(widget.attribute),
+                      key: ValueKey(widget.attribute),
                     ),
                     widget.index,
                   );

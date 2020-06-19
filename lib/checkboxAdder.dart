@@ -154,7 +154,7 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
                           ),
                         ),
                       ),
-                      key: Key(widget.attribute),
+                      key: ValueKey(widget.attribute),
                     ));
                     formCreator
                         .addDetails(exporter(widget.attribute, widget.values));
@@ -180,7 +180,7 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
                             ),
                           ),
                         ),
-                        key: Key(widget.attribute),
+                        key: ValueKey(widget.attribute),
                       ),
                       widget.index,
                     );

@@ -114,7 +114,7 @@ class PreviewTextboxState extends State<PreviewTextbox> {
                             ),
                           ),
                         ),
-                        key: Key(widget.attribute),
+                        key: ValueKey(widget.attribute),
                       ),
                     );
                     List<String> a = [
@@ -143,7 +143,7 @@ class PreviewTextboxState extends State<PreviewTextbox> {
                             ),
                           ),
                         ),
-                        key: Key(widget.attribute),
+                        key: ValueKey(widget.attribute),
                       ),
                       widget.index,
                     );

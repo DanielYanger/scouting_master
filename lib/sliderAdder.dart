@@ -215,7 +215,7 @@ class PreviewSliderState extends State<PreviewSlider> {
                         ),
                       ),
                     ),
-                    key: Key(widget.attribute),
+                    key: ValueKey(widget.attribute),
                   ));
                   formCreator.addDetails([
                     "FormBuilderSlider",
@@ -251,7 +251,7 @@ class PreviewSliderState extends State<PreviewSlider> {
                           ),
                         ),
                       ),
-                      key: Key(widget.attribute),
+                      key: ValueKey(widget.attribute),
                     ),
                     widget.index,
                   );

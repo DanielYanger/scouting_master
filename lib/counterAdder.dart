@@ -121,7 +121,7 @@ class PreviewCounterState extends State<PreviewCounter> {
                         ),
                       ),
                     ),
-                    key: Key(widget.attribute),
+                    key: ValueKey(widget.attribute),
                   ));
                   formCreator.addDetails(
                       ["FormBuilderTouchSpin", "${widget.attribute}"]);
@@ -151,7 +151,7 @@ class PreviewCounterState extends State<PreviewCounter> {
                           ),
                         ),
                       ),
-                      key: Key(widget.attribute),
+                      key: ValueKey(widget.attribute),
                     ),
                     widget.index,
                   );

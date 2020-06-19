@@ -125,7 +125,7 @@ class PreviewBooleanState extends State<PreviewBoolean> {
                           ),
                         ),
                       ),
-                      key: Key(widget.attribute),
+                      key: ValueKey(widget.attribute),
                     ));
                     formCreator.addDetails(
                         ["FormBuilderBoolean", "${widget.attribute}"]);
@@ -157,7 +157,7 @@ class PreviewBooleanState extends State<PreviewBoolean> {
                             ),
                           ),
                         ),
-                        key: Key(widget.attribute),
+                        key: ValueKey(widget.attribute),
                       ),
                       widget.index,
                     );
