@@ -169,7 +169,7 @@ class PreviewDropdownState extends State<PreviewDropdown> {
                       Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Container(
-                          height: 65,
+                          height: 70,
                           child: Card(
                             child: FormBuilderDropdown(
                               attribute: "${widget.attribute}",
@@ -198,7 +198,7 @@ class PreviewDropdownState extends State<PreviewDropdown> {
                       Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Container(
-                          height: 65,
+                          height: 70,
                           child: Card(
                             child: FormBuilderDropdown(
                               attribute: "${widget.attribute}",

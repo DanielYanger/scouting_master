@@ -75,16 +75,6 @@ class PreviewBoolean extends StatefulWidget {
 }
 
 class PreviewBooleanState extends State<PreviewBoolean> {
-  List<FormBuilderFieldOption> createSet(List<String> list) {
-    List<FormBuilderFieldOption> result = [];
-    for (String i in list) {
-      result.add(FormBuilderFieldOption(
-        value: i,
-      ));
-    }
-    return result;
-  }
-
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
 
   @override
