@@ -253,7 +253,6 @@ void formCreator(String stringForm, BuildContext context) {
         ),
       );
     }
-    print(FormBuilder.form.length);
   }
 }
 
