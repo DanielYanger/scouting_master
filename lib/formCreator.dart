@@ -153,19 +153,8 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                               details.removeAt(form.indexOf(i));
                               form.remove(i);
                             });
-                          } else if (direction == DismissDirection.endToStart) {
-                            List<String> temp = details[form.indexOf(i)];
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => editForm(
-                                  temp,
-                                  form.indexOf(i),
-                                ),
-                              ),
-                              (Route<dynamic> route) => false,
-                            );
-                          }
+                          } else if (direction ==
+                              DismissDirection.endToStart) {}
                         },
                         background: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -203,6 +192,7 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                             alignment: Alignment.centerRight,
                           ),
                         ),
+                        // ignore: missing_return
                         confirmDismiss: (DismissDirection direction) async {
                           if (direction == DismissDirection.startToEnd) {
                             return await showDialog(
@@ -227,7 +217,17 @@ class FormCreatorPageState extends State<FormCreatorPage> {
                               },
                             );
                           } else {
-                            return true;
+                            print(form);
+                            List<String> temp = details[form.indexOf(i)];
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => editForm(
+                                  temp,
+                                  form.indexOf(i),
+                                ),
+                              ),
+                            );
                           }
                         },
                       )
