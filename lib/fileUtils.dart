@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:path_provider/path_provider.dart';
 
 class FileUtils {
@@ -25,7 +26,7 @@ class FileUtils {
     return schedule.readAsString();
   }
 
-  static Future<File> saveToFile(String data, String title) async {
+  static Future<bool> saveToFile(String data, String title) async {
     final path = '/storage/emulated/0/Download';
     var directory = new Directory('$path/forms');
     directory.create();
@@ -33,7 +34,14 @@ class FileUtils {
     print(file.path);
     print(data);
     file.create();
-    return file.writeAsString(data);
+    //return file.writeAsString(data);
+    await FlutterShare.shareFile(
+      title: 'Example share',
+      text: 'Example share text',
+      filePath: file.path,
+    ).then((value) => print(value));
+    print("Hello");
+    return true;
   }
 
   static Future<String> createFile(String fileName) async {

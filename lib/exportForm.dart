@@ -47,8 +47,8 @@ class ExportPageState extends State<ExportPage> {
             ),
             RaisedButton(
               child: Text("Export"),
-              onPressed: () {
-                FileUtils.saveToFile(
+              onPressed: () async {
+                await FileUtils.saveToFile(
                     createString(widget.details), _nameController.text);
                 Navigator.pushAndRemoveUntil(
                   context,
