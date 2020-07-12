@@ -10,12 +10,6 @@ class FileUtils {
     return directory.path;
   }
 
-  static Future<String> get getDocumentsPath async {
-    final directory = await getExternalStorageDirectory();
-    print(directory.path);
-    return directory.path;
-  }
-
   static Future<File> get pickFile async {
     Future<File> file = FilePicker.getFile(type: FileType.any);
     return file;
@@ -27,7 +21,7 @@ class FileUtils {
   }
 
   static Future<bool> saveToFile(String data, String title) async {
-    final path = '/storage/emulated/0/Download';
+    final path = getFilePath;
     var directory = new Directory('$path/forms');
     directory.create();
     var file = new File('$path/forms/$title.txt');
@@ -36,8 +30,8 @@ class FileUtils {
     file.create();
     //return file.writeAsString(data);
     await FlutterShare.shareFile(
-      title: 'Example share',
-      text: 'Example share text',
+      title: 'Saving Form',
+      text: 'Save form',
       filePath: file.path,
     ).then((value) => print(value));
     print("Hello");
