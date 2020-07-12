@@ -9,6 +9,12 @@ class FileUtils {
     return directory.path;
   }
 
+  static Future<String> get getDocumentsPath async {
+    final directory = await getExternalStorageDirectory();
+    print(directory.path);
+    return directory.path;
+  }
+
   static Future<File> get pickFile async {
     Future<File> file = FilePicker.getFile(type: FileType.any);
     return file;
@@ -20,7 +26,7 @@ class FileUtils {
   }
 
   static Future<File> saveToFile(String data, String title) async {
-    final path = await getFilePath;
+    final path = '/storage/emulated/0/Download';
     var directory = new Directory('$path/forms');
     directory.create();
     var file = new File('$path/forms/$title.txt');

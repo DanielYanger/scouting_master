@@ -116,11 +116,10 @@ class PreviewBooleanState extends State<PreviewBoolean> {
                           child: FormBuilderRadio(
                             attribute: widget.attribute,
                             options: ["Yes", "No"]
-                                .map((lang) =>
-                                FormBuilderFieldOption(
-                                  value: lang,
-                                  child: Text('$lang'),
-                                ))
+                                .map((lang) => FormBuilderFieldOption(
+                                      value: lang,
+                                      child: Text('$lang'),
+                                    ))
                                 .toList(growable: false),
                             validators: [FormBuilderValidators.required()],
                             decoration: InputDecoration(
@@ -152,11 +151,10 @@ class PreviewBooleanState extends State<PreviewBoolean> {
                             child: FormBuilderRadio(
                               attribute: widget.attribute,
                               options: ["Yes", "No"]
-                                  .map((lang) =>
-                                  FormBuilderFieldOption(
-                                    value: lang,
-                                    child: Text('$lang'),
-                                  ))
+                                  .map((lang) => FormBuilderFieldOption(
+                                        value: lang,
+                                        child: Text('$lang'),
+                                      ))
                                   .toList(growable: false),
                               validators: [FormBuilderValidators.required()],
                               decoration: InputDecoration(

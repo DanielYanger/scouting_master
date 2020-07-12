@@ -178,9 +178,7 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
                           child: Container(
                             height: 40.0 + 48.0 * widget.values.length,
                             child: new FormBuilderCheckboxList(
-                              activeColor: Theme
-                                  .of(context)
-                                  .primaryColor,
+                              activeColor: Theme.of(context).primaryColor,
                               decoration: InputDecoration(
                                 labelText: '${widget.attribute}',
                                 labelStyle: TextStyle(

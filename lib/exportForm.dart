@@ -39,7 +39,7 @@ class ExportPageState extends State<ExportPage> {
         body: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(15.0),
               child: TextField(
                 controller: _nameController,
                 decoration: InputDecoration(labelText: "File Name"),
