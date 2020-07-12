@@ -104,7 +104,7 @@ class PreviewCounterState extends State<PreviewCounter> {
               onPressed: () {
                 if (widget.edit == false) {
                   formCreator.addComponent(Padding(
-                    padding: const EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: Card(
                       child: Container(
                         height: 96,
@@ -136,7 +136,7 @@ class PreviewCounterState extends State<PreviewCounter> {
                 } else {
                   formCreator.editComponent(
                     Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: Card(
                         child: Container(
                           height: 96,

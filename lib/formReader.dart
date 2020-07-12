@@ -64,7 +64,7 @@ void formCreator(String stringForm, BuildContext context) {
       }
       FormBuilder.addComponent(
         new Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(15.0),
           child: Card(
             child: Container(
               height: 40 + 48.0 * options.length,
@@ -99,12 +99,14 @@ void formCreator(String stringForm, BuildContext context) {
       }
       FormBuilder.addComponent(
         Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(15.0),
           child: Card(
             child: Container(
               height: 40 + 48.0 * options.length,
               child: FormBuilderCheckboxList(
-                activeColor: Theme.of(context).primaryColor,
+                activeColor: Theme
+                    .of(context)
+                    .primaryColor,
                 attribute: tempWidget[1],
                 options: createSetCheckbox(options),
                 decoration: InputDecoration(
@@ -122,17 +124,18 @@ void formCreator(String stringForm, BuildContext context) {
 
     else if (tempWidget[0] == "FormBuilderBoolean") {
       FormBuilder.addComponent(Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.all(15.0),
         child: Card(
           child: Container(
             height: 136,
             child: FormBuilderRadio(
               attribute: tempWidget[1],
               options: ["Yes", "No"]
-                  .map((lang) => FormBuilderFieldOption(
-                        value: lang,
-                        child: Text('$lang'),
-                      ))
+                  .map((lang) =>
+                  FormBuilderFieldOption(
+                    value: lang,
+                    child: Text('$lang'),
+                  ))
                   .toList(growable: false),
               validators: [FormBuilderValidators.required()],
               decoration: InputDecoration(
@@ -150,7 +153,7 @@ void formCreator(String stringForm, BuildContext context) {
 
     else if (tempWidget[0] == "FormBuilderTouchSpin") {
       FormBuilder.addComponent(Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.all(15.0),
         child: Card(
           child: Container(
             height: 96,
@@ -181,9 +184,9 @@ void formCreator(String stringForm, BuildContext context) {
       }
       FormBuilder.addComponent(
         Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(15.0),
           child: Container(
-            height: 70,
+            height: 71,
             child: Card(
               child: FormBuilderDropdown(
                 attribute: tempWidget[1],
@@ -205,7 +208,7 @@ void formCreator(String stringForm, BuildContext context) {
 
     else if (tempWidget[0] == "FormBuilderSlider") {
       FormBuilder.addComponent(Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.all(15.0),
         child: Card(
           child: Container(
             height: 114,
@@ -230,7 +233,7 @@ void formCreator(String stringForm, BuildContext context) {
     else if (tempWidget[0] == "FormBuilderTextField") {
       FormBuilder.addComponent(
         Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(15.0),
           child: Card(
             child: Container(
               child: FormBuilderTextField(
@@ -252,10 +255,10 @@ void formCreator(String stringForm, BuildContext context) {
     else if (tempWidget[0] == "Divider") {
       FormBuilder.addComponent(
         Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Container(
-            height: 30 + double.parse(tempWidget[2]),
-            child: Card(
+          padding: const EdgeInsets.all(15.0),
+          child: Card(
+            child: Container(
+              height: 30 + double.parse(tempWidget[2]),
               child: Center(
                 child: Text(
                   tempWidget[1],
@@ -265,8 +268,8 @@ void formCreator(String stringForm, BuildContext context) {
                   ),
                 ),
               ),
+              key: Key(tempWidget[1]),
             ),
-            key: Key(tempWidget[1]),
           ),
         ),
       );

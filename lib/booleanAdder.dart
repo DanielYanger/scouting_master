@@ -86,12 +86,15 @@ class PreviewBooleanState extends State<PreviewBoolean> {
       body: FormBuilder(
         key: _fbKey,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             children: <Widget>[
               FormBuilderRadio(
                 activeColor: Theme.of(context).primaryColor,
-                decoration: InputDecoration(labelText: '${widget.attribute}'),
+                decoration: InputDecoration(
+                  labelText: '${widget.attribute}',
+                  labelStyle: TextStyle(color: Colors.black, fontSize: 20),
+                ),
                 attribute: "${widget.attribute}",
                 validators: [FormBuilderValidators.required()],
                 options: ["Yes", "No"]
@@ -106,17 +109,18 @@ class PreviewBooleanState extends State<PreviewBoolean> {
                 onPressed: () {
                   if (widget.edit == false) {
                     formCreator.addComponent(Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: Card(
                         child: Container(
                           height: 136,
                           child: FormBuilderRadio(
                             attribute: widget.attribute,
                             options: ["Yes", "No"]
-                                .map((lang) => FormBuilderFieldOption(
-                                      value: lang,
-                                      child: Text('$lang'),
-                                    ))
+                                .map((lang) =>
+                                FormBuilderFieldOption(
+                                  value: lang,
+                                  child: Text('$lang'),
+                                ))
                                 .toList(growable: false),
                             validators: [FormBuilderValidators.required()],
                             decoration: InputDecoration(
@@ -141,17 +145,18 @@ class PreviewBooleanState extends State<PreviewBoolean> {
                   } else {
                     formCreator.editComponent(
                       Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: Card(
                           child: Container(
                             height: 136,
                             child: FormBuilderRadio(
                               attribute: widget.attribute,
                               options: ["Yes", "No"]
-                                  .map((lang) => FormBuilderFieldOption(
-                                        value: lang,
-                                        child: Text('$lang'),
-                                      ))
+                                  .map((lang) =>
+                                  FormBuilderFieldOption(
+                                    value: lang,
+                                    child: Text('$lang'),
+                                  ))
                                   .toList(growable: false),
                               validators: [FormBuilderValidators.required()],
                               decoration: InputDecoration(

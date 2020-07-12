@@ -168,9 +168,9 @@ class PreviewDropdownState extends State<PreviewDropdown> {
                   if (!widget.edit) {
                     formCreator.addComponent(
                       Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: Container(
-                          height: 70,
+                          height: 71,
                           child: Card(
                             child: FormBuilderDropdown(
                               attribute: "${widget.attribute}",
@@ -199,9 +199,9 @@ class PreviewDropdownState extends State<PreviewDropdown> {
                   } else {
                     formCreator.editComponent(
                       Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: Container(
-                          height: 70,
+                          height: 71,
                           child: Card(
                             child: FormBuilderDropdown(
                               attribute: "${widget.attribute}",

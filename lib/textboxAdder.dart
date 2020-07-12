@@ -103,7 +103,7 @@ class PreviewTextboxState extends State<PreviewTextbox> {
                   if (!widget.edit) {
                     formCreator.addComponent(
                       Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: Card(
                           child: Container(
                             child: FormBuilderTextField(
@@ -133,7 +133,7 @@ class PreviewTextboxState extends State<PreviewTextbox> {
                   } else {
                     formCreator.editComponent(
                       Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: Card(
                           child: Container(
                             child: FormBuilderTextField(

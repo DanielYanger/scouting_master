@@ -198,7 +198,7 @@ class PreviewSliderState extends State<PreviewSlider> {
               onPressed: () {
                 if (!widget.edit) {
                   formCreator.addComponent(Padding(
-                    padding: const EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: Card(
                       child: Container(
                         height: 114,
@@ -236,7 +236,7 @@ class PreviewSliderState extends State<PreviewSlider> {
                 } else {
                   formCreator.editComponent(
                     Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: Card(
                         child: Container(
                           height: 114,

@@ -122,20 +122,23 @@ class PreviewDividerState extends State<PreviewDivider> {
               onPressed: () {
                 if (!widget.edit) {
                   formCreator.addComponent(
-                    Container(
-                      height: 30 + widget.fontSize,
-                      child: Card(
-                        child: Center(
-                          child: Text(
-                            '${widget.attribute}',
-                            style: TextStyle(
-                              fontSize: widget.fontSize,
-                              fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Container(
+                        height: 30 + widget.fontSize,
+                        child: Card(
+                          child: Center(
+                            child: Text(
+                              '${widget.attribute}',
+                              style: TextStyle(
+                                fontSize: widget.fontSize,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
+                        key: ValueKey(widget.attribute),
                       ),
-                      key: ValueKey(widget.attribute),
                     ),
                   );
                   formCreator.addDetails([
@@ -150,20 +153,23 @@ class PreviewDividerState extends State<PreviewDivider> {
                   );
                 } else {
                   formCreator.editComponent(
-                    Container(
-                      height: 30 + widget.fontSize,
-                      child: Card(
-                        child: Center(
-                          child: Text(
-                            '${widget.attribute}',
-                            style: TextStyle(
-                              fontSize: widget.fontSize,
-                              fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Container(
+                        height: 30 + widget.fontSize,
+                        child: Card(
+                          child: Center(
+                            child: Text(
+                              '${widget.attribute}',
+                              style: TextStyle(
+                                fontSize: widget.fontSize,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
+                        key: ValueKey(widget.attribute),
                       ),
-                      key: ValueKey(widget.attribute),
                     ),
                     widget.index,
                   );

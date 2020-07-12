@@ -151,7 +151,7 @@ class PreviewRadioState extends State<PreviewRadio> {
                 onPressed: () {
                   if (!widget.edit) {
                     formCreator.addComponent(Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: Card(
                         child: Container(
                           height: 40.0 + 48.0 * widget.values.length,
@@ -182,12 +182,14 @@ class PreviewRadioState extends State<PreviewRadio> {
                   } else {
                     formCreator.editComponent(
                       Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: Card(
                           child: Container(
                             height: 40.0 + 48.0 * widget.values.length,
                             child: new FormBuilderRadio(
-                              activeColor: Theme.of(context).primaryColor,
+                              activeColor: Theme
+                                  .of(context)
+                                  .primaryColor,
                               decoration: InputDecoration(
                                 labelText: '${widget.attribute}',
                                 labelStyle: TextStyle(

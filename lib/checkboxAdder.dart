@@ -144,7 +144,7 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
                 onPressed: () {
                   if (!widget.edit) {
                     formCreator.addComponent(Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: Card(
                         child: Container(
                           height: 40.0 + 48.0 * widget.values.length,
@@ -173,12 +173,14 @@ class PreviewCheckboxState extends State<PreviewCheckbox> {
                   } else {
                     formCreator.editComponent(
                       Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: Card(
                           child: Container(
                             height: 40.0 + 48.0 * widget.values.length,
                             child: new FormBuilderCheckboxList(
-                              activeColor: Theme.of(context).primaryColor,
+                              activeColor: Theme
+                                  .of(context)
+                                  .primaryColor,
                               decoration: InputDecoration(
                                 labelText: '${widget.attribute}',
                                 labelStyle: TextStyle(
