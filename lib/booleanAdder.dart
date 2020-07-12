@@ -119,8 +119,11 @@ class PreviewBooleanState extends State<PreviewBoolean> {
                                     ))
                                 .toList(growable: false),
                             validators: [FormBuilderValidators.required()],
-                            decoration:
-                                InputDecoration(labelText: widget.attribute),
+                            decoration: InputDecoration(
+                              labelText: widget.attribute,
+                              labelStyle:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
                             activeColor: Theme.of(context).primaryColor,
                           ),
                         ),
@@ -145,15 +148,21 @@ class PreviewBooleanState extends State<PreviewBoolean> {
                             child: FormBuilderRadio(
                               attribute: widget.attribute,
                               options: ["Yes", "No"]
-                                  .map((lang) => FormBuilderFieldOption(
-                                        value: lang,
-                                        child: Text('$lang'),
-                                      ))
+                                  .map((lang) =>
+                                  FormBuilderFieldOption(
+                                    value: lang,
+                                    child: Text('$lang'),
+                                  ))
                                   .toList(growable: false),
                               validators: [FormBuilderValidators.required()],
-                              decoration:
-                                  InputDecoration(labelText: widget.attribute),
-                              activeColor: Theme.of(context).primaryColor,
+                              decoration: InputDecoration(
+                                labelText: widget.attribute,
+                                labelStyle: TextStyle(
+                                    color: Colors.black, fontSize: 20),
+                              ),
+                              activeColor: Theme
+                                  .of(context)
+                                  .primaryColor,
                             ),
                           ),
                         ),

@@ -93,6 +93,7 @@ class PreviewTextboxState extends State<PreviewTextbox> {
                 attribute: "${widget.attribute}",
                 decoration: InputDecoration(
                   labelText: "${widget.attribute}",
+                  labelStyle: TextStyle(fontSize: 20),
                 ),
                 readOnly: true,
               ),
@@ -109,6 +110,7 @@ class PreviewTextboxState extends State<PreviewTextbox> {
                               attribute: "${widget.attribute}",
                               decoration: InputDecoration(
                                 labelText: "${widget.attribute}",
+                                labelStyle: TextStyle(fontSize: 20),
                               ),
                               readOnly: true,
                             ),
@@ -138,6 +140,7 @@ class PreviewTextboxState extends State<PreviewTextbox> {
                               attribute: "${widget.attribute}",
                               decoration: InputDecoration(
                                 labelText: "${widget.attribute}",
+                                labelStyle: TextStyle(fontSize: 20),
                               ),
                               readOnly: true,
                             ),

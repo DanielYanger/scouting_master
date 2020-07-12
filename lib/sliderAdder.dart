@@ -190,6 +190,7 @@ class PreviewSliderState extends State<PreviewSlider> {
               inactiveColor: Colors.green[100],
               decoration: InputDecoration(
                 labelText: "${widget.attribute}",
+                labelStyle: TextStyle(color: Colors.black, fontSize: 20),
               ),
             ),
             RaisedButton(
@@ -211,6 +212,8 @@ class PreviewSliderState extends State<PreviewSlider> {
                           inactiveColor: Colors.green[100],
                           decoration: InputDecoration(
                             labelText: "${widget.attribute}",
+                            labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 20),
                           ),
                         ),
                       ),
@@ -247,6 +250,8 @@ class PreviewSliderState extends State<PreviewSlider> {
                             inactiveColor: Colors.green[100],
                             decoration: InputDecoration(
                               labelText: "${widget.attribute}",
+                              labelStyle:
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
                           ),
                         ),

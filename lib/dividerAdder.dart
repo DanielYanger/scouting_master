@@ -107,8 +107,14 @@ class PreviewDividerState extends State<PreviewDivider> {
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Center(
-                    child: Text('${widget.attribute}',
-                        style: TextStyle(fontSize: widget.fontSize))),
+                  child: Text(
+                    '${widget.attribute}',
+                    style: TextStyle(
+                      fontSize: widget.fontSize,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ),
             ),
             RaisedButton(
@@ -122,7 +128,10 @@ class PreviewDividerState extends State<PreviewDivider> {
                         child: Center(
                           child: Text(
                             '${widget.attribute}',
-                            style: TextStyle(fontSize: widget.fontSize),
+                            style: TextStyle(
+                              fontSize: widget.fontSize,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -147,7 +156,10 @@ class PreviewDividerState extends State<PreviewDivider> {
                         child: Center(
                           child: Text(
                             '${widget.attribute}',
-                            style: TextStyle(fontSize: widget.fontSize),
+                            style: TextStyle(
+                              fontSize: widget.fontSize,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),

@@ -76,7 +76,10 @@ void formCreator(String stringForm, BuildContext context) {
                           child: Text('$lang'),
                         ))
                     .toList(growable: false),
-                decoration: InputDecoration(labelText: tempWidget[1]),
+                decoration: InputDecoration(
+                  labelText: tempWidget[1],
+                  labelStyle: TextStyle(color: Colors.black, fontSize: 20),
+                ),
                 leadingInput: true,
                 validators: [FormBuilderValidators.required()],
                 activeColor: Theme.of(context).primaryColor,
@@ -101,10 +104,15 @@ void formCreator(String stringForm, BuildContext context) {
             child: Container(
               height: 40 + 48.0 * options.length,
               child: FormBuilderCheckboxList(
-                activeColor: Theme.of(context).primaryColor,
+                activeColor: Theme
+                    .of(context)
+                    .primaryColor,
                 attribute: tempWidget[1],
                 options: createSetCheckbox(options),
-                decoration: InputDecoration(labelText: tempWidget[1]),
+                decoration: InputDecoration(
+                  labelText: tempWidget[1],
+                  labelStyle: TextStyle(color: Colors.black, fontSize: 20),
+                ),
               ),
             ),
           ),
@@ -123,14 +131,20 @@ void formCreator(String stringForm, BuildContext context) {
             child: FormBuilderRadio(
               attribute: tempWidget[1],
               options: ["Yes", "No"]
-                  .map((lang) => FormBuilderFieldOption(
-                        value: lang,
-                        child: Text('$lang'),
-                      ))
+                  .map((lang) =>
+                  FormBuilderFieldOption(
+                    value: lang,
+                    child: Text('$lang'),
+                  ))
                   .toList(growable: false),
               validators: [FormBuilderValidators.required()],
-              decoration: InputDecoration(labelText: tempWidget[1]),
-              activeColor: Theme.of(context).primaryColor,
+              decoration: InputDecoration(
+                labelText: tempWidget[1],
+                labelStyle: TextStyle(color: Colors.black, fontSize: 20),
+              ),
+              activeColor: Theme
+                  .of(context)
+                  .primaryColor,
             ),
           ),
         ),
@@ -147,7 +161,10 @@ void formCreator(String stringForm, BuildContext context) {
             height: 96,
             child: FormBuilderTouchSpin(
               attribute: tempWidget[1],
-              decoration: InputDecoration(labelText: tempWidget[1]),
+              decoration: InputDecoration(
+                labelText: tempWidget[1],
+                labelStyle: TextStyle(color: Colors.black, fontSize: 20),
+              ),
               initialValue: 0,
               step: 1,
               iconSize: 48.0,
@@ -177,6 +194,7 @@ void formCreator(String stringForm, BuildContext context) {
                 attribute: tempWidget[1],
                 decoration: InputDecoration(
                   labelText: tempWidget[1],
+                  labelStyle: TextStyle(color: Colors.black, fontSize: 20),
                 ),
                 hint: Text(tempWidget[2]),
                 validators: [FormBuilderValidators.required()],
@@ -204,6 +222,7 @@ void formCreator(String stringForm, BuildContext context) {
               divisions: int.parse(tempWidget[5]),
               decoration: InputDecoration(
                 labelText: tempWidget[1],
+                labelStyle: TextStyle(color: Colors.black, fontSize: 20),
               ),
             ),
           ),
@@ -223,6 +242,7 @@ void formCreator(String stringForm, BuildContext context) {
                 attribute: "${tempWidget[1]}",
                 decoration: InputDecoration(
                   labelText: "${tempWidget[1]}",
+                  labelStyle: TextStyle(color: Colors.black, fontSize: 20),
                 ),
                 readOnly: true,
               ),
@@ -244,7 +264,10 @@ void formCreator(String stringForm, BuildContext context) {
               child: Center(
                 child: Text(
                   tempWidget[1],
-                  style: TextStyle(fontSize: double.parse(tempWidget[2])),
+                  style: TextStyle(
+                    fontSize: double.parse(tempWidget[2]),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

@@ -156,6 +156,7 @@ class PreviewDropdownState extends State<PreviewDropdown> {
                 attribute: "${widget.attribute}",
                 decoration: InputDecoration(
                   labelText: "${widget.attribute}",
+                  labelStyle: TextStyle(color: Colors.black, fontSize: 20),
                 ),
                 hint: Text('${widget.hint}'),
                 validators: [FormBuilderValidators.required()],
@@ -175,6 +176,8 @@ class PreviewDropdownState extends State<PreviewDropdown> {
                               attribute: "${widget.attribute}",
                               decoration: InputDecoration(
                                 labelText: "${widget.attribute}",
+                                labelStyle: TextStyle(
+                                    color: Colors.black, fontSize: 20),
                               ),
                               hint: Text('${widget.hint}'),
                               validators: [FormBuilderValidators.required()],
@@ -204,6 +207,8 @@ class PreviewDropdownState extends State<PreviewDropdown> {
                               attribute: "${widget.attribute}",
                               decoration: InputDecoration(
                                 labelText: "${widget.attribute}",
+                                labelStyle: TextStyle(
+                                    color: Colors.black, fontSize: 20),
                               ),
                               hint: Text('${widget.hint}'),
                               validators: [FormBuilderValidators.required()],
