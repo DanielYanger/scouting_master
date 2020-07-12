@@ -129,20 +129,17 @@ void formCreator(String stringForm, BuildContext context) {
             child: FormBuilderRadio(
               attribute: tempWidget[1],
               options: ["Yes", "No"]
-                  .map((lang) =>
-                  FormBuilderFieldOption(
-                    value: lang,
-                    child: Text('$lang'),
-                  ))
+                  .map((lang) => FormBuilderFieldOption(
+                        value: lang,
+                        child: Text('$lang'),
+                      ))
                   .toList(growable: false),
               validators: [FormBuilderValidators.required()],
               decoration: InputDecoration(
                 labelText: tempWidget[1],
                 labelStyle: TextStyle(color: Colors.black, fontSize: 20),
               ),
-              activeColor: Theme
-                  .of(context)
-                  .primaryColor,
+              activeColor: Theme.of(context).primaryColor,
             ),
           ),
         ),
