@@ -156,13 +156,11 @@ class PreviewRadioState extends State<PreviewRadio> {
                         child: Container(
                           height: 40.0 + 48.0 * widget.values.length,
                           child: new FormBuilderRadio(
-                            activeColor: Theme
-                                .of(context)
-                                .primaryColor,
+                            activeColor: Theme.of(context).primaryColor,
                             decoration: InputDecoration(
                               labelText: '${widget.attribute}',
                               labelStyle:
-                              TextStyle(color: Colors.black, fontSize: 20),
+                                  TextStyle(color: Colors.black, fontSize: 20),
                             ),
                             attribute: "${widget.attribute}",
                             leadingInput: true,
@@ -189,9 +187,7 @@ class PreviewRadioState extends State<PreviewRadio> {
                           child: Container(
                             height: 40.0 + 48.0 * widget.values.length,
                             child: new FormBuilderRadio(
-                              activeColor: Theme
-                                  .of(context)
-                                  .primaryColor,
+                              activeColor: Theme.of(context).primaryColor,
                               decoration: InputDecoration(
                                 labelText: '${widget.attribute}',
                                 labelStyle: TextStyle(

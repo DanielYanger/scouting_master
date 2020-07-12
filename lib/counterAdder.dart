@@ -146,7 +146,7 @@ class PreviewCounterState extends State<PreviewCounter> {
                             decoration: InputDecoration(
                               labelText: "${widget.attribute}",
                               labelStyle:
-                              TextStyle(color: Colors.black, fontSize: 20),
+                                  TextStyle(color: Colors.black, fontSize: 20),
                             ),
                             step: 1,
                             addIcon: Icon(Icons.add_circle),

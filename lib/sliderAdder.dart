@@ -251,7 +251,7 @@ class PreviewSliderState extends State<PreviewSlider> {
                             decoration: InputDecoration(
                               labelText: "${widget.attribute}",
                               labelStyle:
-                              TextStyle(color: Colors.black, fontSize: 20),
+                                  TextStyle(color: Colors.black, fontSize: 20),
                             ),
                           ),
                         ),

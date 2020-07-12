@@ -104,9 +104,7 @@ void formCreator(String stringForm, BuildContext context) {
             child: Container(
               height: 40 + 48.0 * options.length,
               child: FormBuilderCheckboxList(
-                activeColor: Theme
-                    .of(context)
-                    .primaryColor,
+                activeColor: Theme.of(context).primaryColor,
                 attribute: tempWidget[1],
                 options: createSetCheckbox(options),
                 decoration: InputDecoration(
