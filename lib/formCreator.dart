@@ -247,23 +247,26 @@ class FormCreatorPageState extends State<FormCreatorPage> {
               )
             : ListView(
                 children: <Widget>[
-                  Card(
-                    child: ListTile(
-                      title: Center(child: Text("No Form Detected")),
-                      subtitle: Text(
-                        "Start creating a form by clicking the + button below.",
-                        textAlign: TextAlign.center,
-                      ),
-                      isThreeLine: true,
-                      leading: Icon(
-                        Icons.warning,
-                        size: 50,
-                        color: Colors.red,
-                      ),
-                      trailing: Icon(
-                        Icons.warning,
-                        size: 50,
-                        color: Colors.red,
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Card(
+                      child: ListTile(
+                        title: Center(child: Text("No Form Detected")),
+                        subtitle: Text(
+                          "Start creating a form by clicking the + button below.",
+                          textAlign: TextAlign.center,
+                        ),
+                        isThreeLine: true,
+                        leading: Icon(
+                          Icons.warning,
+                          size: 50,
+                          color: Colors.red,
+                        ),
+                        trailing: Icon(
+                          Icons.warning,
+                          size: 50,
+                          color: Colors.red,
+                        ),
                       ),
                     ),
                   )

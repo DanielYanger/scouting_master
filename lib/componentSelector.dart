@@ -27,7 +27,7 @@ class ComponentSelectorPageState extends State<ComponentSelectorPage> {
         title: Text("Select Component"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(15.0),
         child: ListView(
           children: <Widget>[
             Card(
