@@ -32,8 +32,8 @@ class DividerAdderPageState extends State<DividerAdderPage> {
         title: Text("Divider Component"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
           children: <Widget>[
             ListTile(
               title: Text("Label"),

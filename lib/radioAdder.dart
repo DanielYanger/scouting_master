@@ -43,8 +43,8 @@ class RadioAdderPageState extends State<RadioAdderPage> {
           title: Text("Add Radio Component"),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
             children: <Widget>[
               ListTile(
                 title: Text("Field Name"),
