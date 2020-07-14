@@ -21,7 +21,7 @@ class FileUtils {
   }
 
   static Future<bool> saveToFile(String data, String title) async {
-    final path = getFilePath;
+    final path = await getFilePath;
     var directory = new Directory('$path/forms');
     directory.create();
     var file = new File('$path/forms/$title.txt');
@@ -32,9 +32,8 @@ class FileUtils {
     await FlutterShare.shareFile(
       title: 'Saving Form',
       text: 'Save form',
-      filePath: file.path,
-    ).then((value) => print(value));
-    print("Hello");
+      filePath: path,
+    );
     return true;
   }
 
