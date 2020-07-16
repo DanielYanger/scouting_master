@@ -28,11 +28,11 @@ class FileUtils {
     print(file.path);
     print(data);
     file.create();
-    //return file.writeAsString(data);
+    file.writeAsString(data);
     await FlutterShare.shareFile(
       title: 'Saving Form',
       text: 'Save form',
-      filePath: path,
+      filePath: file.path,
     );
     return true;
   }
