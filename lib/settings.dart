@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoutingmaster/exportForm.dart';
+import 'package:scoutingmaster/my_flutter_app_icons.dart';
 import 'package:scoutingmaster/scouting_icons_icons.dart';
 
 import 'exportForm.dart';
@@ -77,7 +78,7 @@ class SettingsPageState extends State<SettingsPage> {
                   title: Text("Export Form"),
                   subtitle: Text("Export the current form."),
                   leading: Icon(
-                    Icons.cloud_upload,
+                    MyFlutterApp.export_match_data,
                     size: 50,
                   ),
                   onTap: () {
@@ -93,7 +94,7 @@ class SettingsPageState extends State<SettingsPage> {
               Card(
                 child: ListTile(
                   leading: Icon(
-                    Icons.restore_page,
+                    MyFlutterApp.import_match_form,
                     size: 50,
                   ),
                   title: Text("Import Form"),

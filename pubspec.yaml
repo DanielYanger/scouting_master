@@ -75,6 +75,9 @@ flutter:
      - family: ScoutingIcons
        fonts:
          - asset: icons/ScoutingIcons.ttf
+     - family:  MyFlutterApp
+       fonts:
+         - asset: icons/MyFlutterApp.ttf
 
   #   - family: Trajan Pro
   #     fonts:

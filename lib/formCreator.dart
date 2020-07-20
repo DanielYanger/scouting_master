@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:scoutingmaster/scouting_icons_icons.dart';
+import 'package:scoutingmaster/my_flutter_app_icons.dart';
 
 import 'booleanAdder.dart';
 import 'checkboxAdder.dart';
@@ -111,7 +111,7 @@ class FormCreatorPageState extends State<FormCreatorPage> {
       appBar: AppBar(
         title: Text("624 Form Creator"),
         leading: Icon(
-          ScoutingIcons.radioactive,
+          MyFlutterApp.radioactive624,
           size: 50,
         ),
         actions: <Widget>[
