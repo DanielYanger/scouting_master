@@ -119,7 +119,7 @@ class SettingsPageState extends State<SettingsPage> {
                     showAboutDialog(
                         applicationIcon: Icon(ScoutingIcons.radioactive),
                         context: context,
-                        applicationVersion: '1.6.1',
+                        applicationVersion: '1.6.2',
                         applicationLegalese:
                             "This app was developed by Daniel Yang, a programmer for FRC Team 624. This is one of the two apps developed for the Team 624 Scouting Team for use in many years to come. The purpose of this app is to enable the head scout to create master forms compatable with the Scouter App without the need to learn any code.");
                   },
