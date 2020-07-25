@@ -7,6 +7,20 @@ Transfer the APK to the device and install. You may have to go into the settings
 ## Creating Forms
 To start creating forms, click the + icon at the bottom of the screen. Select the type of component you wish to insert and fill out the applicable fields. You will be able to preview the element to ensure it is how you intend it to appear.
 
+### Types of Components
+
+#### Boolean
+A simple yes or no option.
+
+#### Radio
+Multiple choice option that allows the scout to select a single option from the given choices. When seperating options by commas, any spaces after the comma will be transfered to the option name and will create an misaligned option.
+
+#### Checkbox
+Allows the scout to select any number of the given options. The scout can also leave it blank. When seperating options by commas, any spaces after the comma will be transfered to the option name and will create an misaligned option.
+
+#### Dropdown
+Allows the user to select a single option from a list of dropdown options. When seperating options by commas, any spaces after the comma will be transfered to the option name and will create an misaligned option. This field is required and will display the preview text until an option is chosen.
+
 ### Deleting Components
 To delete a component, swipe the component to the right and confirm.
 
