@@ -21,6 +21,18 @@ Allows the scout to select any number of the given options. The scout can also l
 #### Dropdown
 Allows the user to select a single option from a list of dropdown options. When seperating options by commas, any spaces after the comma will be transfered to the option name and will create an misaligned option. This field is required and will display the preview text until an option is chosen.
 
+#### Textbox
+A simple textbox that allows users to record any length of text.
+
+#### Divider
+Creates a component that adds a divider with label into the form. This component does not accept any input. Please don't use too large of a font size.
+
+#### Counter
+An integer counter starting at 0 and incrementing up by 1. Ideal for keeping track of the number of elements scored.
+
+#### Slider
+Creates a slider that allows for a single numberical input on a range of values. The divisions determines the valid values. (Max-Min)/Divisions = incrementing value.
+
 ### Deleting Components
 To delete a component, swipe the component to the right and confirm.
 
